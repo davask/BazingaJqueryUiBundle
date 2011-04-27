@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="bazinga.jquery_ui.templating.helper.ui.class">Bazinga\JqueryUiBundle\Templating\Helper\UiHelper</parameter>
+    </parameters>
+
+    <services>
+        <service id="bazinga.jquery_ui.templating.helper.ui" class="%bazinga.jquery_ui.templating.helper.ui.class%">
+            <argument type="service" id="router" />
+            <tag name="templating.helper" alias="jquery_ui" />
+        </service>
+    </services>
+</container>
