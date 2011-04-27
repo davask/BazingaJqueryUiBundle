@@ -10,10 +10,9 @@ Installation
 
 * Install this bundle as usual.
 
-* Enable helpers/extensions:
+* Add the following line to `app/config/config.yml`:
 
-    # in app/config/config.yml
-    bazinga_jquery_ui: ~
+> bazinga_jquery_ui: ~
 
 * Don't forget to add _jQuery/jQuery UI assets_ (javascript, css) as this bundle does not contains these files.
 
@@ -62,7 +61,7 @@ You can add (standard)  *icons*:
     </button>
 
 
-## jui_button_link
+### jui_button_link
 
 Combine a button with a link.
 
