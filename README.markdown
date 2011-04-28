@@ -133,6 +133,17 @@ Usage (PHP)
 ...
 
 
+Translations
+------------
+
+Each `text` parameter can use translation.
+You can pass a simple key as a string (e.g. 'my.big.title). It will translate this key by using the default catalogue.
+
+You can specify your own message catalogue by using this syntax:
+
+    { 'MyCatalogue' : 'my.big.title' }
+
+
 Credits
 -------
 

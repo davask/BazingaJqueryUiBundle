@@ -65,6 +65,23 @@ class UiHelper extends Helper
     }
 
     /**
+     * Returns a translated text.
+     *
+     * @param string|array $stringOrArray    A string or an array.
+     * @return string   The translated text.
+     */
+    protected function translate($stringOrArray)
+    {
+        if (is_array($stringOrArray)) {
+            $text = $this->translator->trans(current($stringOrArray), array(), key($stringOrArray));
+        } else {
+            $text = $this->translator->trans($stringOrArray);
+        }
+
+        return $text;
+    }
+
+    /**
      * Renders a link tag.
      *
      * @param string $routeOrUrl   A route name or an URL (which begins with http... or /...).
@@ -77,7 +94,7 @@ class UiHelper extends Helper
         $url = $this->isRoute($routeOrUrl) ? $this->router->generate($routeOrUrl, array(), $absolute) : $routeOrUrl;
 
         return strtr(
-            '<a href="%URL%">%TEXT%</a>', array('%URL%' => $url, '%TEXT%' => $this->translator->trans($text)));
+            '<a href="%URL%">%TEXT%</a>', array('%URL%' => $url, '%TEXT%' => $this->translate($text)));
     }
 
     /**
@@ -149,7 +166,7 @@ class UiHelper extends Helper
                 '%HTML_OPTIONS%' => $html_options,
                 '%ADDITIONAL_CLASS%' => $additional_class,
                 '%ICON_PRIMARY%' => $iconPrimary,
-                '%TEXT%' => $this->translator->trans($text),
+                '%TEXT%' => $this->translate($text),
                 '%ICON_SECONDARY%' => $iconSecondary,
             ));
     }
@@ -191,8 +208,8 @@ class UiHelper extends Helper
                     </p>
                 </div>
             </div>', array(
-                '%MESSAGE%' => $this->translator->trans($message),
-                '%LABEL%' => $this->translator->trans($label)
+                '%MESSAGE%' => $this->translate($message),
+                '%LABEL%' => $this->translate($label),
             ));
     }
 
@@ -215,8 +232,8 @@ class UiHelper extends Helper
                     </p>
                 </div>
             </div>', array(
-                '%MESSAGE%' => $this->translator->trans($message),
-                '%LABEL%' => $this->translator->trans($label)
+                '%MESSAGE%' => $this->translate($message),
+                '%LABEL%' => $this->translate($label),
             ));
     }
 
