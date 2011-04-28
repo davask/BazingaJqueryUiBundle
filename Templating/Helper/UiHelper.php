@@ -101,7 +101,12 @@ class UiHelper extends Helper
      * Renders a simple button.
      *
      * Options:
-     *      array('icons' => array('primary' => '...', 'secondary' => '...'));
+     *      array(
+     *          'icons' => array('primary' => '...', 'secondary' => '...'),
+     *          'tag' => '...',
+     *          'class' => array('...', '...'),
+     *          'html_options' => array('xxx' => '...', 'zzz' => '...'),
+     *      );
      *
      * @param string $text      A text to display on the button (label).
      * @param array $options    An array of options.

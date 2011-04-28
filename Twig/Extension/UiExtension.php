@@ -78,7 +78,12 @@ class UiExtension extends \Twig_Extension
      *      {{ jui_button('Configuration', {'icons': { 'primary': 'wrench'} }) }}
      *
      * Options:
-     *      { 'icons': { 'primary': '...', 'secondary': '...' } }
+     *      {
+     *          'icons': { 'primary': '...', 'secondary': '...' },
+     *          'tag': '...',
+     *          'class': [ '...', '...' ],
+     *          'html_options': { 'xxx': '...', 'zzz': '...' },
+     *      }
      *
      * @param string $text      A text to display on the button (label).
      * @param array $options    An array of options.

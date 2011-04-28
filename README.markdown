@@ -73,7 +73,7 @@ Available options:
     'html': { 'id': '...', 'name': '...' }
 
     // CSS class
-    'class': { '...', '...', ... }
+    'class': [ '...', '...', ... ]
 
 
 ### jui_button_link
