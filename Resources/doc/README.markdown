@@ -5,6 +5,7 @@ Here is a set of Twig functions and PHP helpers for [jQuery UI](http://jqueryui.
 You will be able to display degraded versions of buttons, messages box and icons.
 This bundle *does not* provide assets like javascripts or stylesheets files to be able to use your own dependencies.
 
+
 Installation
 ------------
 
@@ -59,6 +60,17 @@ You can add (standard)  *icons*:
         <span class="ui-button-icon-primary ui-icon ui-icon-wrench"></span>
         <span class="ui-button-text">configuration</span>
     </button>
+
+Available options:
+
+    // Icons to add (primary is on the left, secondary on the right)
+    'icons': { 'primary': '...', 'secondary': '...' }
+
+    // Tag to render (default: button)
+    'tag': '...'
+
+    // HTML options to add in the tag element (e.g. <button id="..." name="...">)
+    'html': { 'id': '...', 'name': '...' }
 
 
 ### jui_button_link

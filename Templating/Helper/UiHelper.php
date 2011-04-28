@@ -93,14 +93,32 @@ class UiHelper extends Helper
             $additional_class = 'ui-button-text-only';
         }
 
+        if (array_key_exists('tag', $options)) {
+            $tag = $options['tag'];
+        } else {
+            $tag = 'button';
+        }
+
+        $html_options = '';
+        if (array_key_exists('html', $options)) {
+            foreach ($options['html'] as $k => $v) {
+                $html_options .= $k . '="' . $v . '" ';
+            }
+        }
+
         return strtr(
-            '<button class="ui-button ui-widget ui-state-default ui-corner-all %ADDITIONAL_CLASS%">
+            '<%TAG% class="ui-button ui-widget ui-state-default ui-corner-all %ADDITIONAL_CLASS%" %HTML_OPTIONS%>
                 %ICON_PRIMARY%
                 <span class="ui-button-text">%TEXT%</span>
                 %ICON_SECONDARY%
-            </button>',
-            array('%ADDITIONAL_CLASS%' => $additional_class, '%ICON_PRIMARY%' => $iconPrimary,
-            '%TEXT%' => $text, '%ICON_SECONDARY%' => $iconSecondary));
+            </%TAG%>', array(
+                '%TAG%' => $tag,
+                '%HTML_OPTIONS%' => $html_options,
+                '%ADDITIONAL_CLASS%' => $additional_class,
+                '%ICON_PRIMARY%' => $iconPrimary,
+                '%TEXT%' => $text,
+                '%ICON_SECONDARY%' => $iconSecondary,
+            ));
     }
 
     /**
