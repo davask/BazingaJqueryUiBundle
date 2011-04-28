@@ -72,6 +72,9 @@ Available options:
     // HTML options to add in the tag element (e.g. <button id="..." name="...">)
     'html': { 'id': '...', 'name': '...' }
 
+    // CSS class
+    'class': { '...', '...', ... }
+
 
 ### jui_button_link
 
