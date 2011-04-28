@@ -16,10 +16,15 @@ class UiHelper extends Helper
      * @var \Symfony\Component\Routing\Router
      */
     protected $router;
+    /**
+     * @var \Symfony\Component\Translation\Translator
+     */
+    protected $translator;
 
-    public function __construct(\Symfony\Component\Routing\Router $router)
+    public function __construct(\Symfony\Component\Routing\Router $router, \Symfony\Component\Translation\Translator $translator)
     {
         $this->router = $router;
+        $this->translator = $translator;
     }
 
     /**
@@ -49,7 +54,7 @@ class UiHelper extends Helper
         }
 
         return strtr(
-            '<a href="%URL%">%TEXT%</a>', array('%URL%' => $url, '%TEXT%' => $text));
+            '<a href="%URL%">%TEXT%</a>', array('%URL%' => $url, '%TEXT%' => $this->translator->trans($text)));
     }
 
     /**
@@ -130,7 +135,10 @@ class UiHelper extends Helper
                         %MESSAGE%
                     </p>
                 </div>
-            </div>', array('%MESSAGE%' => $message, '%LABEL%' => $label));
+            </div>', array(
+                '%MESSAGE%' => $this->translator->trans($message),
+                '%LABEL%' => $this->translator->trans($label)
+            ));
     }
 
     /**
@@ -151,7 +159,10 @@ class UiHelper extends Helper
                         %MESSAGE%
                     </p>
                 </div>
-            </div>', array('%MESSAGE%' => $message, '%LABEL%' => $label));
+            </div>', array(
+                '%MESSAGE%' => $this->translator->trans($message),
+                '%LABEL%' => $this->translator->trans($label)
+            ));
     }
 
     /**

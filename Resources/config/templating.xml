@@ -10,6 +10,7 @@
     <services>
         <service id="bazinga.jquery_ui.templating.helper.ui" class="%bazinga.jquery_ui.templating.helper.ui.class%">
             <argument type="service" id="router" />
+            <argument type="service" id="translator" />
             <tag name="templating.helper" alias="jquery_ui" />
         </service>
     </services>
