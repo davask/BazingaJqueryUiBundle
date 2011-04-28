@@ -51,6 +51,7 @@ class UiExtension extends \Twig_Extension
             'jui_info_box'      => new \Twig_Function_Method($this, 'infoBox',      array('is_safe' => array('html'))),
             'jui_error_box'     => new \Twig_Function_Method($this, 'errorBox',     array('is_safe' => array('html'))),
             'jui_icon'          => new \Twig_Function_Method($this, 'icon',         array('is_safe' => array('html'))),
+            'jui_submit'        => new \Twig_Function_Method($this, 'submit',       array('is_safe' => array('html'))),
         );
     }
 
@@ -151,5 +152,20 @@ class UiExtension extends \Twig_Extension
     public function icon($icon)
     {
         return $this->helper->icon($icon);
+    }
+
+    /**
+     * Renders a 'submit' button.
+     *
+     * Example:
+     *      {{ jui_submit({ 'AdminBundle' : 'btn_batch' } }}
+     *
+     * @param string $text         The text to display on the button link.
+     * @param array $options       An array of options.
+     * @return string
+     */
+    public function submit($text, $options = array())
+    {
+        return $this->helper->submit($text, $options);
     }
 }

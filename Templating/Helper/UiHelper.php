@@ -91,7 +91,11 @@ class UiHelper extends Helper
      */
     public function link($routeOrUrl, $text, $absolute = false)
     {
-        $url = $this->isRoute($routeOrUrl) ? $this->router->generate($routeOrUrl, array(), $absolute) : $routeOrUrl;
+        if ('' === $routeOrUrl) {
+            $url = '';
+        } else {
+            $url = $this->isRoute($routeOrUrl) ? $this->router->generate($routeOrUrl, array(), $absolute) : $routeOrUrl;
+        }
 
         return strtr(
             '<a href="%URL%">%TEXT%</a>', array('%URL%' => $url, '%TEXT%' => $this->translate($text)));
@@ -188,7 +192,11 @@ class UiHelper extends Helper
     public function buttonLink($routeOrUrl, $text, $options = array(), $absolute = false)
     {
         if ($this->isRoute($routeOrUrl) && $routeOrUrl == $this->request->get('_route')) {
-            $options = array_merge($options, array('class' => array('ui-state-disabled')));
+            if (array_key_exists('class', $options)) {
+                $options['class'] = array_merge($options['class'], array('ui-state-disabled'));
+            } else {
+                $options['class'] = array('ui-state-disabled');
+            }
         }
 
         return $this->button($this->link($routeOrUrl, $text, $absolute), $options);
@@ -268,5 +276,23 @@ class UiHelper extends Helper
         $icon_class = sprintf('%s ui-icon ui-icon-%s', $prefix, $icon);
 
         return strtr('<span class="%ICON_CLASS%"></span>', array('%ICON_CLASS%' => $icon_class));
+    }
+
+    /**
+     * Renders a 'submit' button.
+     *
+     * @param string $text         The text to display on the button.
+     * @param array $options       An array of options.
+     * @return string
+     */
+    public function submit($text, $options = array())
+    {
+        if (array_key_exists('html', $options)) {
+            $options['html'] = array_merge($options['html'], array('type' => 'submit'));
+        } else {
+            $options['html'] = array('type' => 'submit');
+        }
+
+        return $this->button($text, $options);
     }
 }

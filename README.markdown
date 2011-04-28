@@ -127,6 +127,16 @@ Display a (standard) icon:
     <span class=" ui-icon ui-icon-tag"></span>
 
 
+### jui_submit
+
+Display a _submit_ button:
+
+    {{ jui_submit({ 'AdminBundle' : 'btn_batch' }) }}
+    <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" type="submit" >
+        <span class="ui-button-text">Ok</span>
+    </button>
+
+
 Usage (PHP)
 -----------
 
