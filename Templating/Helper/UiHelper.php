@@ -3,6 +3,10 @@
 namespace Bazinga\JqueryUiBundle\Templating\Helper;
 
 use Symfony\Component\Templating\Helper\Helper;
+use Symfony\Component\Translation\Translator;
+use Symfony\Component\Routing\Router;
+use Symfony\Component\HttpFoundation\Request;
+
 
 /**
  * UiHelper
@@ -20,11 +24,23 @@ class UiHelper extends Helper
      * @var \Symfony\Component\Translation\Translator
      */
     protected $translator;
+    /**
+     * @var \Symfony\Component\HttpFoundation\Request
+     */
+    protected $request;
 
-    public function __construct(\Symfony\Component\Routing\Router $router, \Symfony\Component\Translation\Translator $translator)
+    /**
+     * Default constructor.
+     *
+     * @param \Symfony\Component\Routing\Router         $router     The router.
+     * @param \Symfony\Component\Translation\Translator $translator The translator.
+     * @param \Symfony\Component\HttpFoundation\Request $request    The request.
+     */
+    public function __construct(Router $router, Translator $translator, Request $request)
     {
         $this->router = $router;
         $this->translator = $translator;
+        $this->request = $request;
     }
 
     /**
@@ -38,6 +54,17 @@ class UiHelper extends Helper
     }
 
     /**
+     * Check if a string is a route name or not.
+     *
+     * @param string $routeOrUrl    A route or an URL
+     * @return boolean              Whether the parameter is a real route name or not.
+     */
+    protected function isRoute($routeOrUrl)
+    {
+        return ('/' !== substr($routeOrUrl, 0, 1) && 0 !== strpos($routeOrUrl, 'http'));
+    }
+
+    /**
      * Renders a link tag.
      *
      * @param string $routeOrUrl   A route name or an URL (which begins with http... or /...).
@@ -47,11 +74,7 @@ class UiHelper extends Helper
      */
     public function link($routeOrUrl, $text, $absolute = false)
     {
-        if ('/' === substr($routeOrUrl, 0, 1) || 0 === strpos($routeOrUrl, 'http')) {
-            $url = $routeOrUrl;
-        } else {
-            $url = $this->router->generate($routeOrUrl, array(), $absolute);
-        }
+        $url = $this->isRoute($routeOrUrl) ? $this->router->generate($routeOrUrl, array(), $absolute) : $routeOrUrl;
 
         return strtr(
             '<a href="%URL%">%TEXT%</a>', array('%URL%' => $url, '%TEXT%' => $this->translator->trans($text)));
@@ -69,6 +92,9 @@ class UiHelper extends Helper
      */
     public function button($text, $options = array())
     {
+        // FIXME: Refactor the following part.
+
+        // icons parameter
         if (array_key_exists('icons', $options)) {
             if (isset($options['icons']['primary'])) {
                 $iconPrimary = $this->icon($options['icons']['primary'], 1);
@@ -93,12 +119,21 @@ class UiHelper extends Helper
             $additional_class = 'ui-button-text-only';
         }
 
+        // tag parameter
         if (array_key_exists('tag', $options)) {
             $tag = $options['tag'];
         } else {
             $tag = 'button';
         }
 
+        // class parameter
+        if (array_key_exists('class', $options)) {
+            foreach ($options['class'] as $class) {
+                $additional_class .= ' ' . $class;
+            }
+        }
+
+        // HTML options
         $html_options = '';
         if (array_key_exists('html', $options)) {
             foreach ($options['html'] as $k => $v) {
@@ -108,15 +143,13 @@ class UiHelper extends Helper
 
         return strtr(
             '<%TAG% class="ui-button ui-widget ui-state-default ui-corner-all %ADDITIONAL_CLASS%" %HTML_OPTIONS%>
-                %ICON_PRIMARY%
-                <span class="ui-button-text">%TEXT%</span>
-                %ICON_SECONDARY%
+                %ICON_PRIMARY%<span class="ui-button-text">%TEXT%</span>%ICON_SECONDARY%
             </%TAG%>', array(
                 '%TAG%' => $tag,
                 '%HTML_OPTIONS%' => $html_options,
                 '%ADDITIONAL_CLASS%' => $additional_class,
                 '%ICON_PRIMARY%' => $iconPrimary,
-                '%TEXT%' => $text,
+                '%TEXT%' => $this->translator->trans($text),
                 '%ICON_SECONDARY%' => $iconSecondary,
             ));
     }
@@ -132,6 +165,10 @@ class UiHelper extends Helper
      */
     public function buttonLink($routeOrUrl, $text, $options = array(), $absolute = false)
     {
+        if ($this->isRoute($routeOrUrl) && $routeOrUrl == $this->request->get('_route')) {
+            $options = array_merge($options, array('class' => array('ui-state-disabled')));
+        }
+
         return $this->button($this->link($routeOrUrl, $text, $absolute), $options);
     }
 
