@@ -102,15 +102,16 @@ class UiExtension extends \Twig_Extension
      * Example:
      *      {{ jui_button_link('homepage', 'Home') }}
      *
-     * @param string $routeOrUrl   A route name or an URL (which begins with http... or /...).
-     * @param string $text         The text to display on the button link.
-     * @param array $options       An array of options.
-     * @param boolean $absolute    Whether the generated url should be absolute or relative (default: false).
+     * @param string $routeOrUrl    A route name or an URL (which begins with http... or /...).
+     * @param string $text          The text to display on the button link.
+     * @param array $options        An array of options.
+     * @param boolean $absolute     Whether the generated url should be absolute or relative (default: false).
+     * @param boolean $autoDisabled Whether the link should be disabled (no link) or not (default: true).
      * @return string
      */
-    public function buttonLink($route, $text, $options = array(), $absolute = false)
+    public function buttonLink($route, $text, $options = array(), $absolute = false, $autoDisabled = true)
     {
-        return $this->helper->buttonLink($route, $text, $options, $absolute);
+        return $this->helper->buttonLink($route, $text, $options, $absolute, $autoDisabled);
     }
 
     /**

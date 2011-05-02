@@ -171,10 +171,6 @@ class UiHelper extends Helper
      */
     public function button($text, $options = array())
     {
-        // FIXME: Refactor the following part.
-        // icons parameter
-        
-
         // tag parameter
         if (array_key_exists('tag', $options)) {
             $tag = $options['tag'];
@@ -201,23 +197,49 @@ class UiHelper extends Helper
     /**
      * Renders a button with a link.
      *
-     * @param string $routeOrUrl   A route name or an URL (which begins with http... or /...).
-     * @param string $text         The text to display on the button link.
-     * @param array $options       An array of options.
-     * @param boolean $absolute    Whether the generated url should be absolute or relative (default: false).
+     * @param string $routeOrUrl    A route name or an URL (which begins with http... or /...).
+     * @param string $text          The text to display on the button link.
+     * @param array $options        An array of options.
+     * @param boolean $absolute     Whether the generated url should be absolute or relative (default: false).
+     * @param boolean $autoDisabled Whether the link should be disabled (no link) or not (default: true).
      * @return string
      */
-    public function buttonLink($routeOrUrl, $text, $options = array(), $absolute = false)
+    public function buttonLink($routeOrUrl, $text, $options = array(), $absolute = false, $autoDisabled = true)
     {
-        if ($this->isRoute($routeOrUrl) && $routeOrUrl === $this->request->get('_route')) {
+        // disable button
+        if ($this->isRoute($routeOrUrl) && $routeOrUrl === $this->request->get('_route') && $autoDisabled) {
             if (array_key_exists('class', $options)) {
                 $options['class'] = array_merge($options['class'], array('ui-state-disabled'));
             } else {
                 $options['class'] = array('ui-state-disabled');
             }
         }
+        // tag parameter
+        if (array_key_exists('tag', $options)) {
+            $tag = $options['tag'];
+            unset($options['tag']);
+        } else {
+            $tag = 'button';
+        }
 
-        return $this->button($this->link($routeOrUrl, $text, $absolute), $options);
+        list($icons, $additional_class, $html_options) = $this->parseOptions($options);
+
+        $linkText = strtr('%ICON_PRIMARY%<span class="ui-button-text">%TEXT%</span>%ICON_SECONDARY%',
+            array(
+                '%ICON_PRIMARY%'     => $icons['primary'],
+                '%ICON_SECONDARY%'   => $icons['secondary'],
+                '%TEXT%'             => $this->translate($text),
+            ));
+
+        return strtr(
+            '<%TAG% class="ui-button ui-widget ui-state-default ui-corner-all %ADDITIONAL_CLASS%" %HTML_OPTIONS%>
+                %LINK%
+            </%TAG%>', array(
+                '%TAG%'              => $tag,
+                '%HTML_OPTIONS%'     => trim($html_options),
+                '%ADDITIONAL_CLASS%' => trim($additional_class . ' ' . $icons['class']),
+                '%LINK%'             => $this->link($routeOrUrl, $linkText, $absolute),
+            ));
     }
 
     /**
