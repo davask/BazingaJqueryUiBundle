@@ -6,7 +6,7 @@ use Symfony\Component\Templating\Helper\Helper;
 use Symfony\Component\Translation\Translator;
 use Symfony\Component\Routing\Router;
 use Symfony\Component\HttpFoundation\Request;
-
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * UiHelper
@@ -32,15 +32,13 @@ class UiHelper extends Helper
     /**
      * Default constructor.
      *
-     * @param \Symfony\Component\Routing\Router         $router     The router.
-     * @param \Symfony\Component\Translation\Translator $translator The translator.
-     * @param \Symfony\Component\HttpFoundation\Request $request    The request.
+     * @param Symfony\Component\DependencyInjection\ContainerInterface $container
      */
-    public function __construct(Router $router, Translator $translator, Request $request)
+    public function __construct(ContainerInterface $container)
     {
-        $this->router = $router;
-        $this->translator = $translator;
-        $this->request = $request;
+        $this->router = $container->get('router');
+        $this->translator = $container->get('translator');
+        $this->request = $container->get('request');
     }
 
     /**
