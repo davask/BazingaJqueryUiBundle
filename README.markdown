@@ -2,22 +2,45 @@ JqueryUiBundle
 ==============
 
 Here is a set of Twig functions and PHP helpers for [jQuery UI](http://jqueryui.com/).
-You will be able to display degraded versions of buttons, messages box and icons.
-This bundle *does not* provide assets like javascripts or stylesheets files to be able to use your own dependencies.
+
+**Why ?** You will be able to display degraded versions of buttons, messages box and icons. That ensures to get the same render with and without JavaScript on the most part of web browsers.
+
+_Note:_ This bundle *does not* provide assets like javascripts or stylesheets files to be able to use your own dependencies.
 
 
 Installation
 ------------
 
-* Install this bundle as usual.
+Install this bundle as usual:
 
-* Add the following line to `app/config/config.yml`:
+> git submodule add git://github.com/Bazinga/JqueryUiBundle.git vendor/bundles/Bazinga/JqueryUiBundle
+
+Register the namespace in `app/autoload.php`:
+
+    // app/autoload.php
+    $loader->registerNamespaces(array(
+        // ...
+        'Bazinga' => __DIR__.'/../vendor/bundles',
+    ));
+
+Register the bundle in `app/AppKernel.php`:
+
+    // app/AppKernel.php
+    public function registerBundles()
+    {
+        return array(
+            // ...
+            new Bazinga\JqueryUiBundle\BazingaJqueryUiBundle(),
+        );
+    }
+
+Add the following line to `app/config/config.yml`:
 
 > bazinga_jquery_ui: ~
 
-* Don't forget to add _jQuery/jQuery UI assets_ (javascript, css) as this bundle does not contains these files.
+Don't forget to add _jQuery/jQuery UI assets_ (javascript, css) as this bundle does not contains these files.
 
-* You are ready.
+You are ready.
 
 
 Usage (Twig)
@@ -36,6 +59,14 @@ Simple function to display links by using a route name, a relative URL or an abs
     {{ jui_link('http://google.fr', 'Google') }}
     <a href="http://google.fr">Google</a>
 
+    {{ jui_link('my_route', 'Absolute link', true) }}
+    <a href="http://myapp/my_route">Absolute link</a>
+
+By default, a route will generate a relative URL. By setting the third parameter to `true`, you will generate absolute URLs.
+
+By default, the helper tries to match the current route with the route in parameter. If both match, the link will be _disabled_.
+That means there will be no link. To force the link, you can set the fourth parameter (`autoDisabled`) to `false`.
+
 
 ### jui_button
 
@@ -46,7 +77,7 @@ Display a jQuery UI button.
         <span class="ui-button-text">hello</span>
     </button>
 
-You can add (standard)  *icons*:
+You can add (standard) *icons*:
 
     {{ jui_button('configuration', {'icons': { 'primary': 'wrench', 'secondary': 'tag'} }) }}
     <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-secondary">
@@ -87,6 +118,8 @@ Combine a button with a link.
         <span class="ui-button-text"><a href="/app_dev.php/">hello</a></span>
     </button>
 
+It combines both parameters of `jui_button()` and `jui_link()`.
+
 
 ### jui_info_box
 
@@ -103,6 +136,21 @@ Display information messages:
         </div>
     </div>
 
+
+You can use _placeholders_ by using the following syntax:
+
+    {{ jui_info_box('Hello %name%', {'%name%' : 'world' }) }}
+    <div class="ui-widget info-box">
+        <div class="ui-state-highlight ui-corner-all" style="padding: 0 0.7em;">
+            <p>
+                <span class="ui-icon ui-icon-info" style="float: left; margin-right: 0.7em;"></span>
+                <strong>Info:</strong>
+                Hello world
+            </p>
+        </div>
+    </div>
+
+
 ### jui_error_box
 
 Display error messages:
@@ -117,6 +165,9 @@ Display error messages:
             </p>
         </div>
     </div>
+
+
+You can also use _placeholders_.
 
 
 ### jui_icon
