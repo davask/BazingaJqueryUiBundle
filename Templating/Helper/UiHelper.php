@@ -211,9 +211,9 @@ class UiHelper extends Helper
     {
         return strtr(
             '<div class="ui-widget info-box">
-                <div class="ui-state-highlight ui-corner-all" style="padding: 0pt 0.7em;">
+                <div class="ui-state-highlight ui-corner-all" style="padding: 0 0.7em;">
                     <p>
-                        <span class="ui-icon ui-icon-info" style="float: left; margin-right: 0.3em; margin-top: 0.1em;"></span>
+                        <span class="ui-icon ui-icon-info" style="float: left; margin-right: 0.7em;"></span>
                         <strong>%LABEL%</strong>
                         %MESSAGE%
                     </p>
@@ -235,9 +235,9 @@ class UiHelper extends Helper
     {
         return strtr(
             '<div class="ui-widget error-box">
-                <div class="ui-state-error ui-corner-all" style="padding: 0pt 0.7em;">
+                <div class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
                     <p>
-                        <span class="ui-icon ui-icon-alert" style="float: left; margin-right: 0.3em; margin-top: 0.1em;"></span>
+                        <span class="ui-icon ui-icon-alert" style="float: left; margin-right: 0.7em;"></span>
                         <strong>%LABEL%</strong>
                         %MESSAGE%
                     </p>
