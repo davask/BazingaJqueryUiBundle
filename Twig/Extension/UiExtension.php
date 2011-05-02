@@ -61,14 +61,15 @@ class UiExtension extends \Twig_Extension
      * Example:
      *      {{ jui_link('homepage', 'Home', false) }}
      *
-     * @param string $routeOrUrl   A route name or an URL (which begins with http... or /...).
-     * @param string $text         The text to display on the link.
-     * @param boolean $absolute    Whether the generated url should be absolute or relative (default: false).
+     * @param string $routeOrUrl    A route name or an URL (which begins with http... or /...).
+     * @param string $text          The text to display on the link.
+     * @param boolean $absolute     Whether the generated url should be absolute or relative (default: false).
+     * @param boolean $autoDisabled Whether the link should be disabled (no link) or not (default: true).
      * @return string
      */
-    public function link($route, $text, $absolute = false)
+    public function link($route, $text, $absolute = false, $autoDisabled = true)
     {
-        return $this->helper->link($route, $text, $absolute);
+        return $this->helper->link($route, $text, $absolute, $autoDisabled);
     }
 
     /**
@@ -83,7 +84,7 @@ class UiExtension extends \Twig_Extension
      *          'icons': { 'primary': '...', 'secondary': '...' },
      *          'tag': '...',
      *          'class': [ '...', '...' ],
-     *          'html_options': { 'xxx': '...', 'zzz': '...' },
+     *          'html': { 'xxx': '...', 'zzz': '...' },
      *      }
      *
      * @param string $text      A text to display on the button (label).
@@ -119,24 +120,26 @@ class UiExtension extends \Twig_Extension
      *     {{ jui_info_box('Hello, World !', 'Information') }}
      *
      * @param string $message   A message to display in the box.
+     * @param string $replace   An array of replacements.
      * @param string $label     A label for this box (default: 'Info:').
      * @return string
      */
-    public function infoBox($text, $label = 'Info:')
+    public function infoBox($text, $replace = array(), $label = 'Info:')
     {
-        return $this->helper->infoBox($text, $label);
+        return $this->helper->infoBox($text, $replace, $label);
     }
 
     /**
      * Renders an error box.
      *
      * @param string $message   A message to display in the box.
+     * @param string $replace   An array of replacements.
      * @param string $label     A label for this box (default: 'Error:').
      * @return string
      */
-    public function errorBox($text, $label = 'Error:')
+    public function errorBox($text, $replace = array(), $label = 'Error:')
     {
-        return $this->helper->errorBox($text, $label);
+        return $this->helper->errorBox($text, $replace, $label);
     }
 
     /**

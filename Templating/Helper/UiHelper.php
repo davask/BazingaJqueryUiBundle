@@ -32,7 +32,7 @@ class UiHelper extends Helper
     /**
      * Default constructor.
      *
-     * @param Symfony\Component\DependencyInjection\ContainerInterface $container
+     * @param \Symfony\Component\DependencyInjection\ContainerInterface $container
      */
     public function __construct(ContainerInterface $container)
     {
@@ -59,44 +59,99 @@ class UiHelper extends Helper
      */
     protected function isRoute($routeOrUrl)
     {
-        return ('/' !== substr($routeOrUrl, 0, 1) && 0 !== strpos($routeOrUrl, 'http'));
+        return ('/' !== substr($routeOrUrl, 0, 1) && false === strpos($routeOrUrl, '://'));
     }
 
     /**
      * Returns a translated text.
      *
-     * @param string|array $stringOrArray    A string or an array.
-     * @return string   The translated text.
+     * @param string|array $stringOrArray   A string or an array.
+     * @param array $replace                An array of replacements.
+     * @return string                       The translated text.
      */
-    protected function translate($stringOrArray)
+    protected function translate($stringOrArray, $replace = array())
     {
         if (is_array($stringOrArray)) {
-            $text = $this->translator->trans(current($stringOrArray), array(), key($stringOrArray));
+            $text = $this->translator->trans(current($stringOrArray), $replace, key($stringOrArray));
         } else {
-            $text = $this->translator->trans($stringOrArray);
+            $text = $this->translator->trans($stringOrArray, $replace);
         }
 
         return $text;
     }
 
     /**
+     * Parse options.
+     *
+     * @param array $options    An array of options.
+     * @return array
+     */
+    protected function parseOptions($options)
+    {
+        // icons
+        $icons = array('class' => null, 'primary' => null, 'secondary' => null);
+        if (array_key_exists('icons', $options)) {
+            if (isset($options['icons']['primary'])) {
+                $icons['primary'] = $this->icon($options['icons']['primary'], 1);
+                $icons['class'] = 'ui-button-text-icon-primary';
+            }
+
+            if (isset($options['icons']['secondary'])) {
+                $icons['secondary'] = $this->icon($options['icons']['secondary'], 2);
+                $icon['class'] = 'ui-button-text-icon-secondary';
+            }
+
+            if (null !== $icons['primary'] && null !== $icons['secondary']) {
+                $icons['class'] = 'ui-button-text-icons';
+            }
+            unset($options['icons']);
+        } else {
+            $icons['class'] = 'ui-button-text-only';
+        }
+
+        // class parameter
+        $additional_class = '';
+        if (array_key_exists('class', $options)) {
+            foreach ($options['class'] as $class) {
+                $additional_class .= $class . ' ';
+            }
+            unset($options['class']);
+        }
+
+        // HTML options
+        $html_options = '';
+        if (array_key_exists('html', $options)) {
+            foreach ($options['html'] as $k => $v) {
+                $html_options .= $k . '="' . $v . '" ';
+            }
+            unset($options['html']);
+        }
+
+        return array($icons, trim($additional_class), trim($html_options));
+    }
+
+    /**
      * Renders a link tag.
      *
-     * @param string $routeOrUrl   A route name or an URL (which begins with http... or /...).
-     * @param string $text         The text to display on the link.
-     * @param boolean $absolute    Whether the generated url should be absolute or relative (default: false).
+     * @param string $routeOrUrl    A route name or an URL (which begins with http... or /...).
+     * @param string $text          The text to display on the link.
+     * @param boolean $absolute     Whether the generated url should be absolute or relative (default: false).
+     * @param boolean $autoDisabled Whether the link should be disabled (no link) or not (default: true).
      * @return string
      */
-    public function link($routeOrUrl, $text, $absolute = false)
+    public function link($routeOrUrl, $text, $absolute = false, $autoDisabled = true)
     {
         if ('' === $routeOrUrl) {
             $url = '';
         } else {
-            $url = $this->isRoute($routeOrUrl) ? $this->router->generate($routeOrUrl, array(), $absolute) : $routeOrUrl;
+            if ($this->isRoute($routeOrUrl) && $routeOrUrl === $this->request->get('_route') && $autoDisabled) {
+                return $this->translate($text);
+            } else {
+                $url = $this->isRoute($routeOrUrl) ? $this->router->generate($routeOrUrl, array(), $absolute) : $routeOrUrl;
+            }
         }
 
-        return strtr(
-            '<a href="%URL%">%TEXT%</a>', array('%URL%' => $url, '%TEXT%' => $this->translate($text)));
+        return strtr('<a href="%URL%">%TEXT%</a>', array('%URL%' => $url, '%TEXT%' => $this->translate($text)));
     }
 
     /**
@@ -107,7 +162,7 @@ class UiHelper extends Helper
      *          'icons' => array('primary' => '...', 'secondary' => '...'),
      *          'tag' => '...',
      *          'class' => array('...', '...'),
-     *          'html_options' => array('xxx' => '...', 'zzz' => '...'),
+     *          'html' => array('xxx' => '...', 'zzz' => '...'),
      *      );
      *
      * @param string $text      A text to display on the button (label).
@@ -117,64 +172,29 @@ class UiHelper extends Helper
     public function button($text, $options = array())
     {
         // FIXME: Refactor the following part.
-
         // icons parameter
-        if (array_key_exists('icons', $options)) {
-            if (isset($options['icons']['primary'])) {
-                $iconPrimary = $this->icon($options['icons']['primary'], 1);
-                $additional_class = 'ui-button-text-icon-primary';
-            } else {
-                $iconPrimary = '';
-            }
-
-            if (isset($options['icons']['secondary'])) {
-                $iconSecondary = $this->icon($options['icons']['secondary'], 2);
-                $additional_class = 'ui-button-text-icon-secondary';
-            } else {
-                $iconSecondary = '';
-            }
-
-            if ('' === $iconPrimary && '' === $iconSecondary) {
-                $additional_class = 'ui-button-text-icons';
-            }
-        } else {
-            $iconPrimary = '';
-            $iconSecondary = '';
-            $additional_class = 'ui-button-text-only';
-        }
+        
 
         // tag parameter
         if (array_key_exists('tag', $options)) {
             $tag = $options['tag'];
+            unset($options['tag']);
         } else {
             $tag = 'button';
         }
 
-        // class parameter
-        if (array_key_exists('class', $options)) {
-            foreach ($options['class'] as $class) {
-                $additional_class .= ' ' . $class;
-            }
-        }
-
-        // HTML options
-        $html_options = '';
-        if (array_key_exists('html', $options)) {
-            foreach ($options['html'] as $k => $v) {
-                $html_options .= $k . '="' . $v . '" ';
-            }
-        }
+        list($icons, $additional_class, $html_options) = $this->parseOptions($options);
 
         return strtr(
             '<%TAG% class="ui-button ui-widget ui-state-default ui-corner-all %ADDITIONAL_CLASS%" %HTML_OPTIONS%>
                 %ICON_PRIMARY%<span class="ui-button-text">%TEXT%</span>%ICON_SECONDARY%
             </%TAG%>', array(
-                '%TAG%' => $tag,
-                '%HTML_OPTIONS%' => $html_options,
-                '%ADDITIONAL_CLASS%' => $additional_class,
-                '%ICON_PRIMARY%' => $iconPrimary,
-                '%TEXT%' => $this->translate($text),
-                '%ICON_SECONDARY%' => $iconSecondary,
+                '%TAG%'              => $tag,
+                '%HTML_OPTIONS%'     => trim($html_options),
+                '%ADDITIONAL_CLASS%' => trim($additional_class . ' ' . $icons['class']),
+                '%ICON_PRIMARY%'     => $icons['primary'],
+                '%ICON_SECONDARY%'   => $icons['secondary'],
+                '%TEXT%'             => $this->translate($text),
             ));
     }
 
@@ -189,7 +209,7 @@ class UiHelper extends Helper
      */
     public function buttonLink($routeOrUrl, $text, $options = array(), $absolute = false)
     {
-        if ($this->isRoute($routeOrUrl) && $routeOrUrl == $this->request->get('_route')) {
+        if ($this->isRoute($routeOrUrl) && $routeOrUrl === $this->request->get('_route')) {
             if (array_key_exists('class', $options)) {
                 $options['class'] = array_merge($options['class'], array('ui-state-disabled'));
             } else {
@@ -204,10 +224,11 @@ class UiHelper extends Helper
      * Renders an info box.
      *
      * @param string $message   A message to display in the box.
+     * @param string $replace   An array of replacements.
      * @param string $label     A label for this box (default: 'Info:').
      * @return string
      */
-    public function infoBox($message, $label = 'Info:')
+    public function infoBox($message, $replace = array(), $label = 'Info:')
     {
         return strtr(
             '<div class="ui-widget info-box">
@@ -219,8 +240,8 @@ class UiHelper extends Helper
                     </p>
                 </div>
             </div>', array(
-                '%MESSAGE%' => $this->translate($message),
-                '%LABEL%' => $this->translate($label),
+                '%MESSAGE%' => $this->translate($message, $replace),
+                '%LABEL%'   => $this->translate($label, $replace),
             ));
     }
 
@@ -228,10 +249,11 @@ class UiHelper extends Helper
      * Renders an error box.
      *
      * @param string $message   A message to display in the box.
+     * @param string $replace   An array of replacements.
      * @param string $label     A label for this box (default: 'Error:').
      * @return string
      */
-    public function errorBox($message, $label = 'Error:')
+    public function errorBox($message, $replace = array(), $label = 'Error:')
     {
         return strtr(
             '<div class="ui-widget error-box">
@@ -243,8 +265,8 @@ class UiHelper extends Helper
                     </p>
                 </div>
             </div>', array(
-                '%MESSAGE%' => $this->translate($message),
-                '%LABEL%' => $this->translate($label),
+                '%MESSAGE%' => $this->translate($message, $replace),
+                '%LABEL%'   => $this->translate($label),
             ));
     }
 
@@ -271,7 +293,7 @@ class UiHelper extends Helper
                     $prefix = '';
         }
 
-        $icon_class = sprintf('%s ui-icon ui-icon-%s', $prefix, $icon);
+        $icon_class = sprintf('ui-icon %s ui-icon-%s', $prefix, $icon);
 
         return strtr('<span class="%ICON_CLASS%"></span>', array('%ICON_CLASS%' => $icon_class));
     }
