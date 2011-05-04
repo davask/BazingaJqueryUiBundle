@@ -98,7 +98,7 @@ class UiHelper extends Helper
 
             if (isset($options['icons']['secondary'])) {
                 $icons['secondary'] = $this->icon($options['icons']['secondary'], 2);
-                $icon['class'] = 'ui-button-text-icon-secondary';
+                $icons['class'] = 'ui-button-text-icon-secondary';
             }
 
             if (null !== $icons['primary'] && null !== $icons['secondary']) {
@@ -313,9 +313,13 @@ class UiHelper extends Helper
     {
         // silk support
         if (0 === strpos($icon, 'silk')) {
-            $prefix = '-silk ui-silk ui-';
+            if (0 === $position) {
+                $prefix = 'ui-silk ui-';
+            } else {
+                $prefix = 'ui-icon-silk ui-silk ui-';
+            }
         } else {
-            $prefix = ' ui-icon-';
+            $prefix = 'ui-icon ui-icon-';
         }
 
         switch($position) {
@@ -327,9 +331,12 @@ class UiHelper extends Helper
                     $suffix = '';
         }
 
-        $icon_class = sprintf('ui-icon%s%s %s ', $prefix, $icon, $suffix);
-
-        return strtr('<span class="%ICON_CLASS%"></span>', array('%ICON_CLASS%' => $icon_class));
+        return strtr('<span class="%PREFIX%%ICON% %SUFFIX%"></span>',
+            array(
+                '%PREFIX%' => $prefix,
+                '%ICON%' => $icon,
+                '%SUFFIX%' => $suffix,
+            ));
     }
 
     /**
