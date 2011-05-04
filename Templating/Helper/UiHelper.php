@@ -295,6 +295,11 @@ class UiHelper extends Helper
     /**
      * Renders an icon.
      *
+     * Silk icons:
+     *      This method supports **silk** icons (from famfamfam).
+     *      Just prefix your icon name by 'silk-' to automatically use a
+     *      silk icon instead of a JqueryUi one.
+     *
      * Positions:
      *      0: none (default).
      *      1: primary.
@@ -306,16 +311,23 @@ class UiHelper extends Helper
      */
     public function icon($icon, $position = 0)
     {
-        switch($position) {
-            case 1: $prefix = 'ui-button-icon-primary';
-                    break;
-            case 2: $prefix = 'ui-button-icon-secondary';
-                    break;
-            default:
-                    $prefix = '';
+        // silk support
+        if (0 === strpos($icon, 'silk')) {
+            $prefix = '-silk ui-silk ui-';
+        } else {
+            $prefix = ' ui-icon-';
         }
 
-        $icon_class = sprintf('ui-icon %s ui-icon-%s', $prefix, $icon);
+        switch($position) {
+            case 1: $suffix = 'ui-button-icon-primary';
+                    break;
+            case 2: $suffix = 'ui-button-icon-secondary';
+                    break;
+            default:
+                    $suffix = '';
+        }
+
+        $icon_class = sprintf('ui-icon%s%s %s ', $prefix, $icon, $suffix);
 
         return strtr('<span class="%ICON_CLASS%"></span>', array('%ICON_CLASS%' => $icon_class));
     }
