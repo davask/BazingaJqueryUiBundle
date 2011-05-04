@@ -77,7 +77,7 @@ Display a jQuery UI button.
         <span class="ui-button-text">hello</span>
     </button>
 
-You can add (standard) *icons*:
+You can add *icons* (see section *Focus on icons*):
 
     {{ jui_button('configuration', {'icons': { 'primary': 'wrench', 'secondary': 'tag'} }) }}
     <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-secondary">
@@ -203,6 +203,24 @@ You can pass a simple key as a string (e.g. 'my.big.title). It will translate th
 You can specify your own message catalogue by using this syntax:
 
     { 'MyCatalogue' : 'my.big.title' }
+
+
+Focus on icons
+--------------
+
+This bundle comes with the famous **silk** icons set from [famfamfam](http://www.famfamfam.com/archive/silk-icons-thats-your-lot/).
+It provides over 700 16-by-16 pixel icons and this bundle integrates them with jQueryUi.
+
+So basically, you just have to add the _silk-sprite.css_ file to your set of stylesheets:
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/bazingajqueryui/famfamfam/silk-sprite.css') }}" />
+
+Once done, you will be able to use **silk icons** like jQueryUi ones, just prefix them by `silk-`:
+
+    {{ jui_button('Save', {'icons': { 'secondary': 'silk-disk'} }) }}
+    <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-secondary" >
+        <span class="ui-button-text">Save</span><span class="ui-icon-silk ui-silk ui-silk-disk ui-button-icon-secondary"></span>
+    </button>
 
 
 Credits
