@@ -9,12 +9,18 @@ top: 50%;
 .ui-button-medium span.ui-button-text {
     font-size: 0.9em;
 }
+.ui-button-small-primary span.ui-button-text,
+.ui-button-medium-primary span.ui-button-text,
 .ui-button-silk-primary span.ui-button-text {
     padding-left: 26px;
 }
+.ui-button-small-secondary span.ui-button-text,
+.ui-button-medium-secondary span.ui-button-text,
 .ui-button-silk-secondary span.ui-button-text {
     padding-right: 26px;
 }
+.ui-button-small-icons span.ui-button-text,
+.ui-button-medium-icons span.ui-button-text,
 .ui-button-silk-icons span.ui-button-text {
     padding-left: 26px;
     padding-right: 26px;
