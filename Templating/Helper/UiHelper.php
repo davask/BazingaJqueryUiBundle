@@ -181,6 +181,14 @@ class UiHelper extends Helper
 
         list($icons, $additional_class, $html_options) = $this->parseOptions($options);
 
+        if (array_key_exists('icon-only', $options) && true === $options['icon-only']) {
+            if (null !== $icons['primary'] && null !== $icons['secondary']) {
+                $icons['class'] = 'ui-button-icons-only';
+            } else {
+                $icons['class'] = 'ui-button-icon-only';
+            }
+        }
+
         return strtr(
             '<%TAG% class="ui-button ui-widget ui-state-default ui-corner-all %ADDITIONAL_CLASS%" %HTML_OPTIONS%>
                 %ICON_PRIMARY%<span class="ui-button-text">%TEXT%</span>%ICON_SECONDARY%
@@ -223,6 +231,14 @@ class UiHelper extends Helper
         }
 
         list($icons, $additional_class, $html_options) = $this->parseOptions($options);
+
+        if (array_key_exists('icon-only', $options) && true === $options['icon-only']) {
+            if (null !== $icons['primary'] && null !== $icons['secondary']) {
+                $icons['class'] = 'ui-button-icons-only';
+            } else {
+                $icons['class'] = 'ui-button-icon-only';
+            }
+        }
 
         $linkText = strtr('%ICON_PRIMARY%<span class="ui-button-text">%TEXT%</span>%ICON_SECONDARY%',
             array(
