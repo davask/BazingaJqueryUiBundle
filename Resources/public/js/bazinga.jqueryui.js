@@ -22,4 +22,6 @@
             });
         });
     });
+
+    $("select, input:checkbox, input:radio, input:file, input:text, input:password").uniform();
 })(jQuery);
