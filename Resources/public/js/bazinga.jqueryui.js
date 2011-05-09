@@ -21,7 +21,9 @@
                 $(this).removeClass('ui-state-active');
             });
         });
-    });
 
-    $("select, input:checkbox, input:radio, input:file, input:text, input:password").uniform();
+        if ($.uniform) {
+            $("select, input:checkbox, input:radio, input:file, input:text, input:password").uniform();
+        }
+    });
 })(jQuery);
