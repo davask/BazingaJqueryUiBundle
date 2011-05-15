@@ -1,0 +1,731 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>DocBlox Documentation</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta><link rel="stylesheet" href="css/black-tie/jquery-ui-1.8.2.custom.css" type="text/css"></link><link rel="stylesheet" href="css/jquery.treeview.css" type="text/css"></link><link rel="stylesheet" href="css/theme.css" type="text/css"></link><script type="text/javascript" src="js/jquery-1.4.2.min.js"></script><script type="text/javascript" src="js/jquery-ui-1.8.2.custom.min.js"></script><script type="text/javascript" src="js/jquery.cookie.js"></script><script type="text/javascript" src="js/jquery.treeview.js"></script><script type="text/javascript">
+            $(document).ready(function() {
+                $(".filetree").treeview({
+                    collapsed: true,
+                    persist: "cookie"
+                });
+
+                $("#accordion").accordion({
+                    collapsible: true,
+                    autoHeight:  false,
+                    fillSpace:   true
+                });
+
+                $(".tabs").tabs();
+            });
+        </script></head><body><div xmlns="" id="content">
+<script>
+      $(document).ready(function() {
+        $('dl.function-info, dl.constant-info, dl.property-info').prev().css('cursor', 'pointer');
+        $('dl.function-info, dl.constant-info, dl.property-info').prev().click(function() {
+          if ($(this).next().is(':hidden'))
+          {
+            $(this).children('img')[0].src = 'images/arrow_down.gif';
+          } else
+          {
+            $(this).children('img')[0].src = 'images/arrow_right.gif';
+          }
+          $(this).next().slideToggle();
+        });
+      $('dl.function-info, dl.constant-info, dl.property-info').hide();
+      $('dl.function-info img, dl.constant-info img, dl.property-info img').show();
+      });
+    </script><a name="top"></a><h1 class="file">Templating/Helper/UiHelper.php</h1>
+<div class="file_menu">
+<a href="#classes">Classes</a> </div>
+<dl class="file-info">
+<dt>Classes</dt>
+<dd><a class="class" href="#Bazinga%5CJqueryUiBundle%5CTemplating%5CHelper%5CUiHelper">UiHelper</a></dd>
+</dl>
+<a name="classes"></a><a id="Bazinga\JqueryUiBundle\Templating\Helper\UiHelper"></a><h2 class="class">Bazinga\JqueryUiBundle\Templating\Helper\UiHelper<div class="to-top"><a href="#top">jump to top</a></div>
+</h2>
+<div class="class">
+<dl class="class-info">
+<dt>Extends from</dt>
+<dd>Symfony\Component\Templating\Helper\Helper</dd>
+<dt>author</dt>
+<dd>William DURAND &lt;william.durand1@gmail.com&gt;</dd>
+<dt>package</dt>
+<dd>JqueryUiBundle</dd>
+<dt>subpackage</dt>
+<dd>Templating.Helper</dd>
+<dt>Properties</dt>
+<dd><a class="property" href="#Bazinga%5CJqueryUiBundle%5CTemplating%5CHelper%5CUiHelper::%24router">$router</a></dd>
+<dd><a class="property" href="#Bazinga%5CJqueryUiBundle%5CTemplating%5CHelper%5CUiHelper::%24translator">$translator</a></dd>
+<dd><a class="property" href="#Bazinga%5CJqueryUiBundle%5CTemplating%5CHelper%5CUiHelper::%24request">$request</a></dd>
+<dt>Methods</dt>
+<dd><a class="method" href="#Bazinga%5CJqueryUiBundle%5CTemplating%5CHelper%5CUiHelper::__construct()">__construct</a></dd>
+<dd><a class="method" href="#Bazinga%5CJqueryUiBundle%5CTemplating%5CHelper%5CUiHelper::getName()">getName</a></dd>
+<dd><a class="method" href="#Bazinga%5CJqueryUiBundle%5CTemplating%5CHelper%5CUiHelper::isRoute()">isRoute</a></dd>
+<dd><a class="method" href="#Bazinga%5CJqueryUiBundle%5CTemplating%5CHelper%5CUiHelper::translate()">translate</a></dd>
+<dd><a class="method" href="#Bazinga%5CJqueryUiBundle%5CTemplating%5CHelper%5CUiHelper::parseOptions()">parseOptions</a></dd>
+<dd><a class="method" href="#Bazinga%5CJqueryUiBundle%5CTemplating%5CHelper%5CUiHelper::link()">link</a></dd>
+<dd><a class="method" href="#Bazinga%5CJqueryUiBundle%5CTemplating%5CHelper%5CUiHelper::button()">button</a></dd>
+<dd><a class="method" href="#Bazinga%5CJqueryUiBundle%5CTemplating%5CHelper%5CUiHelper::buttonLink()">buttonLink</a></dd>
+<dd><a class="method" href="#Bazinga%5CJqueryUiBundle%5CTemplating%5CHelper%5CUiHelper::infoBox()">infoBox</a></dd>
+<dd><a class="method" href="#Bazinga%5CJqueryUiBundle%5CTemplating%5CHelper%5CUiHelper::errorBox()">errorBox</a></dd>
+<dd><a class="method" href="#Bazinga%5CJqueryUiBundle%5CTemplating%5CHelper%5CUiHelper::icon()">icon</a></dd>
+<dd><a class="method" href="#Bazinga%5CJqueryUiBundle%5CTemplating%5CHelper%5CUiHelper::submit()">submit</a></dd>
+</dl>
+<h3>Description</h3>
+<p class="short-description">UiHelper
+Contains a set of helper methods for jQuery UI.</p>
+<div class="long-description">
+</div>
+<h3>Properties</h3>
+<div>
+<a id="Bazinga\JqueryUiBundle\Templating\Helper\UiHelper::$request"></a><h4 class="property">$request<div class="to-top"><a href="#Bazinga%5CJqueryUiBundle%5CTemplating%5CHelper%5CUiHelper">jump to class</a></div>
+</h4>
+<div class="property">
+<code>\Symfony\Component\HttpFoundation\Request <span class="highlight">$request</span> = ''</code><p class="short-description"></p>
+<div class="long-description">
+</div>
+<div class="api-section">
+<h4 class="info">
+<img src="images/arrow_right.gif"> Details</h4>
+<dl class="property-info">
+<dt>$request</dt>
+<dd>\Symfony\Component\HttpFoundation\Request<br><em></em>
+</dd>
+<dt>visibility</dt>
+<dd>protected</dd>
+<dt>default</dt>
+<dd></dd>
+<dt>final</dt>
+<dd>false</dd>
+<dt>static</dt>
+<dd>false</dd>
+</dl>
+<div class="clear"></div>
+</div>
+</div>
+<a id="Bazinga\JqueryUiBundle\Templating\Helper\UiHelper::$router"></a><h4 class="property">$router<div class="to-top"><a href="#Bazinga%5CJqueryUiBundle%5CTemplating%5CHelper%5CUiHelper">jump to class</a></div>
+</h4>
+<div class="property">
+<code>\Symfony\Component\Routing\Router <span class="highlight">$router</span> = ''</code><p class="short-description"></p>
+<div class="long-description">
+</div>
+<div class="api-section">
+<h4 class="info">
+<img src="images/arrow_right.gif"> Details</h4>
+<dl class="property-info">
+<dt>$router</dt>
+<dd>\Symfony\Component\Routing\Router<br><em></em>
+</dd>
+<dt>visibility</dt>
+<dd>protected</dd>
+<dt>default</dt>
+<dd></dd>
+<dt>final</dt>
+<dd>false</dd>
+<dt>static</dt>
+<dd>false</dd>
+</dl>
+<div class="clear"></div>
+</div>
+</div>
+<a id="Bazinga\JqueryUiBundle\Templating\Helper\UiHelper::$translator"></a><h4 class="property">$translator<div class="to-top"><a href="#Bazinga%5CJqueryUiBundle%5CTemplating%5CHelper%5CUiHelper">jump to class</a></div>
+</h4>
+<div class="property">
+<code>\Symfony\Component\Translation\Translator <span class="highlight">$translator</span> = ''</code><p class="short-description"></p>
+<div class="long-description">
+</div>
+<div class="api-section">
+<h4 class="info">
+<img src="images/arrow_right.gif"> Details</h4>
+<dl class="property-info">
+<dt>$translator</dt>
+<dd>\Symfony\Component\Translation\Translator<br><em></em>
+</dd>
+<dt>visibility</dt>
+<dd>protected</dd>
+<dt>default</dt>
+<dd></dd>
+<dt>final</dt>
+<dd>false</dd>
+<dt>static</dt>
+<dd>false</dd>
+</dl>
+<div class="clear"></div>
+</div>
+</div>
+</div>
+<h3>Methods</h3>
+<div>
+<a id="Bazinga\JqueryUiBundle\Templating\Helper\UiHelper::__construct()"></a><h4 class="method">__construct<div class="to-top"><a href="#UiHelper">jump to class</a></div>
+</h4>
+<div class="method">
+<code><span class="highlight">__construct</span><span class="nb-faded-text">(
+          \Symfony\Component\DependencyInjection\ContainerInterface $container
+          )
+        </span>
+        :
+        </code><p class="short-description">Default constructor.</p>
+<div class="long-description">
+</div>
+<div class="api-section">
+<h5 class="arguments">Arguments</h5>
+<dl class="argument-info">
+<dt>$container</dt>
+<dd>\Symfony\Component\DependencyInjection\ContainerInterface<br><em></em>
+</dd>
+</dl>
+<div class="clear"></div>
+</div>
+<div class="api-section">
+<h5 class="info">
+<img src="images/arrow_right.gif"> Details</h5>
+<dl class="function-info">
+<dt>visibility</dt>
+<dd>public</dd>
+<dt>final</dt>
+<dd>false</dd>
+<dt>static</dt>
+<dd>false</dd>
+</dl>
+<div class="clear"></div>
+</div>
+</div>
+<a id="Bazinga\JqueryUiBundle\Templating\Helper\UiHelper::button()"></a><h4 class="method">button<div class="to-top"><a href="#UiHelper">jump to class</a></div>
+</h4>
+<div class="method">
+<code><span class="highlight">button</span><span class="nb-faded-text">(
+          string $text, array $options
+              =
+              array
+          )
+        </span>
+        :
+        string</code><p class="short-description">Renders a simple button.</p>
+<div class="long-description"><p>Options:
+     array(
+         'icons' => array('primary' => '...', 'secondary' => '...'),
+         'tag' => '...',
+         'class' => array('...', '...'),
+         'html' => array('xxx' => '...', 'zzz' => '...'),
+     );</p>
+</div>
+<div class="api-section">
+<h5 class="arguments">Arguments</h5>
+<dl class="argument-info">
+<dt>$text</dt>
+<dd>string<br><em>A text to display on the button (label).</em>
+</dd>
+<dt>$options</dt>
+<dd>array<br><em>An array of options.</em>
+</dd>
+</dl>
+<div class="clear"></div>
+</div>
+<div class="api-section">
+<h5 class="output">Output</h5>
+<dl class="return-info">
+<dt>string</dt>
+<dd><em></em></dd>
+</dl>
+<div class="clear"></div>
+</div>
+<div class="api-section">
+<h5 class="info">
+<img src="images/arrow_right.gif"> Details</h5>
+<dl class="function-info">
+<dt>visibility</dt>
+<dd>public</dd>
+<dt>final</dt>
+<dd>false</dd>
+<dt>static</dt>
+<dd>false</dd>
+</dl>
+<div class="clear"></div>
+</div>
+</div>
+<a id="Bazinga\JqueryUiBundle\Templating\Helper\UiHelper::buttonLink()"></a><h4 class="method">buttonLink<div class="to-top"><a href="#UiHelper">jump to class</a></div>
+</h4>
+<div class="method">
+<code><span class="highlight">buttonLink</span><span class="nb-faded-text">(
+          string $routeOrUrl, string $text, array $options
+              =
+              array, boolean $absolute
+              =
+              false, boolean $autoDisabled
+              =
+              true
+          )
+        </span>
+        :
+        string</code><p class="short-description">Renders a button with a link.</p>
+<div class="long-description">
+</div>
+<div class="api-section">
+<h5 class="arguments">Arguments</h5>
+<dl class="argument-info">
+<dt>$routeOrUrl</dt>
+<dd>string<br><em>A route name or an URL (which begins with http... or /...).</em>
+</dd>
+<dt>$text</dt>
+<dd>string<br><em>The text to display on the button link.</em>
+</dd>
+<dt>$options</dt>
+<dd>array<br><em>An array of options.</em>
+</dd>
+<dt>$absolute</dt>
+<dd>boolean<br><em>Whether the generated url should be absolute or relative (default: false).</em>
+</dd>
+<dt>$autoDisabled</dt>
+<dd>boolean<br><em>Whether the link should be disabled (no link) or not (default: true).</em>
+</dd>
+</dl>
+<div class="clear"></div>
+</div>
+<div class="api-section">
+<h5 class="output">Output</h5>
+<dl class="return-info">
+<dt>string</dt>
+<dd><em></em></dd>
+</dl>
+<div class="clear"></div>
+</div>
+<div class="api-section">
+<h5 class="info">
+<img src="images/arrow_right.gif"> Details</h5>
+<dl class="function-info">
+<dt>visibility</dt>
+<dd>public</dd>
+<dt>final</dt>
+<dd>false</dd>
+<dt>static</dt>
+<dd>false</dd>
+</dl>
+<div class="clear"></div>
+</div>
+</div>
+<a id="Bazinga\JqueryUiBundle\Templating\Helper\UiHelper::errorBox()"></a><h4 class="method">errorBox<div class="to-top"><a href="#UiHelper">jump to class</a></div>
+</h4>
+<div class="method">
+<code><span class="highlight">errorBox</span><span class="nb-faded-text">(
+          string $message, string $replace
+              =
+              array, string $label
+              =
+              Error:
+          )
+        </span>
+        :
+        string</code><p class="short-description">Renders an error box.</p>
+<div class="long-description">
+</div>
+<div class="api-section">
+<h5 class="arguments">Arguments</h5>
+<dl class="argument-info">
+<dt>$message</dt>
+<dd>string<br><em>A message to display in the box.</em>
+</dd>
+<dt>$replace</dt>
+<dd>string<br><em>An array of replacements.</em>
+</dd>
+<dt>$label</dt>
+<dd>string<br><em>A label for this box (default: &amp;#039;Error:&amp;#039;).</em>
+</dd>
+</dl>
+<div class="clear"></div>
+</div>
+<div class="api-section">
+<h5 class="output">Output</h5>
+<dl class="return-info">
+<dt>string</dt>
+<dd><em></em></dd>
+</dl>
+<div class="clear"></div>
+</div>
+<div class="api-section">
+<h5 class="info">
+<img src="images/arrow_right.gif"> Details</h5>
+<dl class="function-info">
+<dt>visibility</dt>
+<dd>public</dd>
+<dt>final</dt>
+<dd>false</dd>
+<dt>static</dt>
+<dd>false</dd>
+</dl>
+<div class="clear"></div>
+</div>
+</div>
+<a id="Bazinga\JqueryUiBundle\Templating\Helper\UiHelper::getName()"></a><h4 class="method">getName<div class="to-top"><a href="#UiHelper">jump to class</a></div>
+</h4>
+<div class="method">
+<code><span class="highlight">getName</span><span class="nb-faded-text">(
+          
+          )
+        </span>
+        :
+        string</code><p class="short-description">Getter.</p>
+<div class="long-description">
+</div>
+<div class="api-section">
+<h5 class="output">Output</h5>
+<dl class="return-info">
+<dt>string</dt>
+<dd><em>The name of this helper.</em></dd>
+</dl>
+<div class="clear"></div>
+</div>
+<div class="api-section">
+<h5 class="info">
+<img src="images/arrow_right.gif"> Details</h5>
+<dl class="function-info">
+<dt>visibility</dt>
+<dd>public</dd>
+<dt>final</dt>
+<dd>false</dd>
+<dt>static</dt>
+<dd>false</dd>
+</dl>
+<div class="clear"></div>
+</div>
+</div>
+<a id="Bazinga\JqueryUiBundle\Templating\Helper\UiHelper::icon()"></a><h4 class="method">icon<div class="to-top"><a href="#UiHelper">jump to class</a></div>
+</h4>
+<div class="method">
+<code><span class="highlight">icon</span><span class="nb-faded-text">(
+          string $icon, integer $position
+              =
+              0
+          )
+        </span>
+        :
+        string</code><p class="short-description">Renders an icon.</p>
+<div class="long-description"><p>Silk icons:
+     This method supports <strong>silk</strong> icons (from famfamfam).
+     Just prefix your icon name by 'silk-' to automatically use a
+     silk icon instead of a JqueryUi one.</p>
+
+<p>Positions:
+     0: none (default).
+     1: primary.
+     2: secondary.</p>
+</div>
+<div class="api-section">
+<h5 class="arguments">Arguments</h5>
+<dl class="argument-info">
+<dt>$icon</dt>
+<dd>string<br><em>An icon name.</em>
+</dd>
+<dt>$position</dt>
+<dd>integer<br><em>Icon position.</em>
+</dd>
+</dl>
+<div class="clear"></div>
+</div>
+<div class="api-section">
+<h5 class="output">Output</h5>
+<dl class="return-info">
+<dt>string</dt>
+<dd><em></em></dd>
+</dl>
+<div class="clear"></div>
+</div>
+<div class="api-section">
+<h5 class="info">
+<img src="images/arrow_right.gif"> Details</h5>
+<dl class="function-info">
+<dt>visibility</dt>
+<dd>public</dd>
+<dt>final</dt>
+<dd>false</dd>
+<dt>static</dt>
+<dd>false</dd>
+</dl>
+<div class="clear"></div>
+</div>
+</div>
+<a id="Bazinga\JqueryUiBundle\Templating\Helper\UiHelper::infoBox()"></a><h4 class="method">infoBox<div class="to-top"><a href="#UiHelper">jump to class</a></div>
+</h4>
+<div class="method">
+<code><span class="highlight">infoBox</span><span class="nb-faded-text">(
+          string $message, string $replace
+              =
+              array, string $label
+              =
+              Info:
+          )
+        </span>
+        :
+        string</code><p class="short-description">Renders an info box.</p>
+<div class="long-description">
+</div>
+<div class="api-section">
+<h5 class="arguments">Arguments</h5>
+<dl class="argument-info">
+<dt>$message</dt>
+<dd>string<br><em>A message to display in the box.</em>
+</dd>
+<dt>$replace</dt>
+<dd>string<br><em>An array of replacements.</em>
+</dd>
+<dt>$label</dt>
+<dd>string<br><em>A label for this box (default: &amp;#039;Info:&amp;#039;).</em>
+</dd>
+</dl>
+<div class="clear"></div>
+</div>
+<div class="api-section">
+<h5 class="output">Output</h5>
+<dl class="return-info">
+<dt>string</dt>
+<dd><em></em></dd>
+</dl>
+<div class="clear"></div>
+</div>
+<div class="api-section">
+<h5 class="info">
+<img src="images/arrow_right.gif"> Details</h5>
+<dl class="function-info">
+<dt>visibility</dt>
+<dd>public</dd>
+<dt>final</dt>
+<dd>false</dd>
+<dt>static</dt>
+<dd>false</dd>
+</dl>
+<div class="clear"></div>
+</div>
+</div>
+<a id="Bazinga\JqueryUiBundle\Templating\Helper\UiHelper::isRoute()"></a><h4 class="method">isRoute<div class="to-top"><a href="#UiHelper">jump to class</a></div>
+</h4>
+<div class="method">
+<code><span class="highlight">isRoute</span><span class="nb-faded-text">(
+          string $routeOrUrl
+          )
+        </span>
+        :
+        boolean</code><p class="short-description">Check if a string is a route name or not.</p>
+<div class="long-description">
+</div>
+<div class="api-section">
+<h5 class="arguments">Arguments</h5>
+<dl class="argument-info">
+<dt>$routeOrUrl</dt>
+<dd>string<br><em>A route or an URL</em>
+</dd>
+</dl>
+<div class="clear"></div>
+</div>
+<div class="api-section">
+<h5 class="output">Output</h5>
+<dl class="return-info">
+<dt>boolean</dt>
+<dd><em>Whether the parameter is a real route name or not.</em></dd>
+</dl>
+<div class="clear"></div>
+</div>
+<div class="api-section">
+<h5 class="info">
+<img src="images/arrow_right.gif"> Details</h5>
+<dl class="function-info">
+<dt>visibility</dt>
+<dd>protected</dd>
+<dt>final</dt>
+<dd>false</dd>
+<dt>static</dt>
+<dd>false</dd>
+</dl>
+<div class="clear"></div>
+</div>
+</div>
+<a id="Bazinga\JqueryUiBundle\Templating\Helper\UiHelper::link()"></a><h4 class="method">link<div class="to-top"><a href="#UiHelper">jump to class</a></div>
+</h4>
+<div class="method">
+<code><span class="highlight">link</span><span class="nb-faded-text">(
+          string $routeOrUrl, string $text, boolean $absolute
+              =
+              false, boolean $autoDisabled
+              =
+              true
+          )
+        </span>
+        :
+        string</code><p class="short-description">Renders a link tag.</p>
+<div class="long-description">
+</div>
+<div class="api-section">
+<h5 class="arguments">Arguments</h5>
+<dl class="argument-info">
+<dt>$routeOrUrl</dt>
+<dd>string<br><em>A route name or an URL (which begins with http... or /...).</em>
+</dd>
+<dt>$text</dt>
+<dd>string<br><em>The text to display on the link.</em>
+</dd>
+<dt>$absolute</dt>
+<dd>boolean<br><em>Whether the generated url should be absolute or relative (default: false).</em>
+</dd>
+<dt>$autoDisabled</dt>
+<dd>boolean<br><em>Whether the link should be disabled (no link) or not (default: true).</em>
+</dd>
+</dl>
+<div class="clear"></div>
+</div>
+<div class="api-section">
+<h5 class="output">Output</h5>
+<dl class="return-info">
+<dt>string</dt>
+<dd><em></em></dd>
+</dl>
+<div class="clear"></div>
+</div>
+<div class="api-section">
+<h5 class="info">
+<img src="images/arrow_right.gif"> Details</h5>
+<dl class="function-info">
+<dt>visibility</dt>
+<dd>public</dd>
+<dt>final</dt>
+<dd>false</dd>
+<dt>static</dt>
+<dd>false</dd>
+</dl>
+<div class="clear"></div>
+</div>
+</div>
+<a id="Bazinga\JqueryUiBundle\Templating\Helper\UiHelper::parseOptions()"></a><h4 class="method">parseOptions<div class="to-top"><a href="#UiHelper">jump to class</a></div>
+</h4>
+<div class="method">
+<code><span class="highlight">parseOptions</span><span class="nb-faded-text">(
+          array $options
+          )
+        </span>
+        :
+        array</code><p class="short-description">Parse options.</p>
+<div class="long-description">
+</div>
+<div class="api-section">
+<h5 class="arguments">Arguments</h5>
+<dl class="argument-info">
+<dt>$options</dt>
+<dd>array<br><em>An array of options.</em>
+</dd>
+</dl>
+<div class="clear"></div>
+</div>
+<div class="api-section">
+<h5 class="output">Output</h5>
+<dl class="return-info">
+<dt>array</dt>
+<dd><em></em></dd>
+</dl>
+<div class="clear"></div>
+</div>
+<div class="api-section">
+<h5 class="info">
+<img src="images/arrow_right.gif"> Details</h5>
+<dl class="function-info">
+<dt>visibility</dt>
+<dd>protected</dd>
+<dt>final</dt>
+<dd>false</dd>
+<dt>static</dt>
+<dd>false</dd>
+</dl>
+<div class="clear"></div>
+</div>
+</div>
+<a id="Bazinga\JqueryUiBundle\Templating\Helper\UiHelper::submit()"></a><h4 class="method">submit<div class="to-top"><a href="#UiHelper">jump to class</a></div>
+</h4>
+<div class="method">
+<code><span class="highlight">submit</span><span class="nb-faded-text">(
+          string $text, array $options
+              =
+              array
+          )
+        </span>
+        :
+        string</code><p class="short-description">Renders a 'submit' button.</p>
+<div class="long-description">
+</div>
+<div class="api-section">
+<h5 class="arguments">Arguments</h5>
+<dl class="argument-info">
+<dt>$text</dt>
+<dd>string<br><em>The text to display on the button.</em>
+</dd>
+<dt>$options</dt>
+<dd>array<br><em>An array of options.</em>
+</dd>
+</dl>
+<div class="clear"></div>
+</div>
+<div class="api-section">
+<h5 class="output">Output</h5>
+<dl class="return-info">
+<dt>string</dt>
+<dd><em></em></dd>
+</dl>
+<div class="clear"></div>
+</div>
+<div class="api-section">
+<h5 class="info">
+<img src="images/arrow_right.gif"> Details</h5>
+<dl class="function-info">
+<dt>visibility</dt>
+<dd>public</dd>
+<dt>final</dt>
+<dd>false</dd>
+<dt>static</dt>
+<dd>false</dd>
+</dl>
+<div class="clear"></div>
+</div>
+</div>
+<a id="Bazinga\JqueryUiBundle\Templating\Helper\UiHelper::translate()"></a><h4 class="method">translate<div class="to-top"><a href="#UiHelper">jump to class</a></div>
+</h4>
+<div class="method">
+<code><span class="highlight">translate</span><span class="nb-faded-text">(
+          string|array $stringOrArray, array $replace
+              =
+              array
+          )
+        </span>
+        :
+        string</code><p class="short-description">Returns a translated text.</p>
+<div class="long-description">
+</div>
+<div class="api-section">
+<h5 class="arguments">Arguments</h5>
+<dl class="argument-info">
+<dt>$stringOrArray</dt>
+<dd>stringarray<br><em>A string or an array.</em>
+</dd>
+<dt>$replace</dt>
+<dd>array<br><em>An array of replacements.</em>
+</dd>
+</dl>
+<div class="clear"></div>
+</div>
+<div class="api-section">
+<h5 class="output">Output</h5>
+<dl class="return-info">
+<dt>string</dt>
+<dd><em>The translated text.</em></dd>
+</dl>
+<div class="clear"></div>
+</div>
+<div class="api-section">
+<h5 class="info">
+<img src="images/arrow_right.gif"> Details</h5>
+<dl class="function-info">
+<dt>visibility</dt>
+<dd>protected</dd>
+<dt>final</dt>
+<dd>false</dd>
+<dt>static</dt>
+<dd>false</dd>
+</dl>
+<div class="clear"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<small xmlns="" class="footer">Documentation was generated by <a href="http://docblox-project.org">DocBlox 0.10.0</a>.
+    </small></body></html>

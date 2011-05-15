@@ -1,0 +1,880 @@
+<?xml version="1.0"?>
+<project version="0.10.0" title="">
+  <file path="BazingaJqueryUiBundle.php" hash="2d6662b9b23e87d904b94cef5ff7eaa1">
+    <namespace-alias name="Bundle">Symfony\Component\HttpKernel\Bundle\Bundle</namespace-alias>
+    <class final="false" abstract="false" line="11" namespace="Bazinga\JqueryUiBundle">
+      <name>BazingaJqueryUiBundle</name>
+      <extends>Symfony\Component\HttpKernel\Bundle\Bundle</extends>
+      <full_name>Bazinga\JqueryUiBundle\BazingaJqueryUiBundle</full_name>
+      <docblock>
+        <description/>
+        <long-description>
+</long-description>
+        <tag name="package" description="JqueryUiBundle" line="7"/>
+        <tag name="author" description="William DURAND &amp;lt;william.durand1@gmail.com&amp;gt;" line="7"/>
+      </docblock>
+    </class>
+  </file>
+  <file path="DependencyInjection/BazingaJqueryUiExtension.php" hash="9622c21be5fbf7cb937938978f1e75f0">
+    <namespace-alias name="Extension">Symfony\Component\HttpKernel\DependencyInjection\Extension</namespace-alias>
+    <namespace-alias name="XmlFileLoader">Symfony\Component\DependencyInjection\Loader\XmlFileLoader</namespace-alias>
+    <namespace-alias name="ContainerBuilder">Symfony\Component\DependencyInjection\ContainerBuilder</namespace-alias>
+    <namespace-alias name="FileLocator">Symfony\Component\Config\FileLocator</namespace-alias>
+    <class final="false" abstract="false" line="18" namespace="Bazinga\JqueryUiBundle\DependencyInjection">
+      <name>BazingaJqueryUiExtension</name>
+      <extends>Symfony\Component\HttpKernel\DependencyInjection\Extension</extends>
+      <full_name>Bazinga\JqueryUiBundle\DependencyInjection\BazingaJqueryUiExtension</full_name>
+      <docblock>
+        <description>BazingaJqueryUiExtension
+Load configuration.</description>
+        <long-description>
+</long-description>
+        <tag name="package" description="JqueryUiBundle" line="10"/>
+        <tag name="subpackage" description="DependencyInjection" line="10"/>
+        <tag name="author" description="William DURAND &amp;lt;william.durand1@gmail.com&amp;gt;" line="10"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" line="20">
+        <name>load</name>
+        <argument line="20">
+          <name>$configs</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="20">
+          <name>$container</name>
+          <default/>
+          <type>ContainerBuilder</type>
+        </argument>
+      </method>
+    </class>
+  </file>
+  <file path="Templating/Helper/UiHelper.php" hash="638cd851d239d072ed6298378d2baa8b">
+    <namespace-alias name="Helper">Symfony\Component\Templating\Helper\Helper</namespace-alias>
+    <namespace-alias name="Translator">Symfony\Component\Translation\Translator</namespace-alias>
+    <namespace-alias name="Router">Symfony\Component\Routing\Router</namespace-alias>
+    <namespace-alias name="Request">Symfony\Component\HttpFoundation\Request</namespace-alias>
+    <namespace-alias name="ContainerInterface">Symfony\Component\DependencyInjection\ContainerInterface</namespace-alias>
+    <class final="false" abstract="false" line="19" namespace="Bazinga\JqueryUiBundle\Templating\Helper">
+      <name>UiHelper</name>
+      <extends>Symfony\Component\Templating\Helper\Helper</extends>
+      <full_name>Bazinga\JqueryUiBundle\Templating\Helper\UiHelper</full_name>
+      <docblock>
+        <description>UiHelper
+Contains a set of helper methods for jQuery UI.</description>
+        <long-description>
+</long-description>
+        <tag name="package" description="JqueryUiBundle" line="11"/>
+        <tag name="subpackage" description="Templating.Helper" line="11"/>
+        <tag name="author" description="William DURAND &amp;lt;william.durand1@gmail.com&amp;gt;" line="11"/>
+      </docblock>
+      <property final="false" static="false" visibility="protected" line="24">
+        <name>$router</name>
+        <default/>
+        <docblock>
+          <description/>
+          <long-description>
+</long-description>
+          <tag name="var" description="" type="\Symfony\Component\Routing\Router" variable="" line="21">
+            <type by_reference="false">\Symfony\Component\Routing\Router</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="protected" line="28">
+        <name>$translator</name>
+        <default/>
+        <docblock>
+          <description/>
+          <long-description>
+</long-description>
+          <tag name="var" description="" type="\Symfony\Component\Translation\Translator" variable="" line="25">
+            <type by_reference="false">\Symfony\Component\Translation\Translator</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="protected" line="32">
+        <name>$request</name>
+        <default/>
+        <docblock>
+          <description/>
+          <long-description>
+</long-description>
+          <tag name="var" description="" type="\Symfony\Component\HttpFoundation\Request" variable="" line="29">
+            <type by_reference="false">\Symfony\Component\HttpFoundation\Request</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" line="39">
+        <name>__construct</name>
+        <docblock>
+          <description>Default constructor.</description>
+          <long-description>
+</long-description>
+          <tag name="param" description="" type="\Symfony\Component\DependencyInjection\ContainerInterface" variable="$container" line="34">
+            <type by_reference="false">\Symfony\Component\DependencyInjection\ContainerInterface</type>
+          </tag>
+        </docblock>
+        <argument line="39">
+          <name>$container</name>
+          <default/>
+          <type>ContainerInterface</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" line="51">
+        <name>getName</name>
+        <docblock>
+          <description>Getter.</description>
+          <long-description>
+</long-description>
+          <tag name="return" description="The name of this helper." type="string" line="46">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" line="62">
+        <name>isRoute</name>
+        <docblock>
+          <description>Check if a string is a route name or not.</description>
+          <long-description>
+</long-description>
+          <tag name="param" description="A route or an URL" type="string" variable="$routeOrUrl" line="56">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag name="return" description="Whether the parameter is a real route name or not." type="boolean" line="56">
+            <type by_reference="false">boolean</type>
+          </tag>
+        </docblock>
+        <argument line="62">
+          <name>$routeOrUrl</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" line="74">
+        <name>translate</name>
+        <docblock>
+          <description>Returns a translated text.</description>
+          <long-description>
+</long-description>
+          <tag name="param" description="A string or an array." type="string|array" variable="$stringOrArray" line="67">
+            <type by_reference="false">string</type>
+            <type by_reference="false">array</type>
+          </tag>
+          <tag name="param" description="An array of replacements." type="array" variable="$replace" line="67">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag name="return" description="The translated text." type="string" line="67">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="74">
+          <name>$stringOrArray</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="74">
+          <name>$replace</name>
+          <default>array</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" line="91">
+        <name>parseOptions</name>
+        <docblock>
+          <description>Parse options.</description>
+          <long-description>
+</long-description>
+          <tag name="param" description="An array of options." type="array" variable="$options" line="85">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag name="return" description="" type="array" line="85">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+        <argument line="91">
+          <name>$options</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" line="144">
+        <name>link</name>
+        <docblock>
+          <description>Renders a link tag.</description>
+          <long-description>
+</long-description>
+          <tag name="param" description="A route name or an URL (which begins with http... or /...)." type="string" variable="$routeOrUrl" line="135">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag name="param" description="The text to display on the link." type="string" variable="$text" line="135">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag name="param" description="Whether the generated url should be absolute or relative (default: false)." type="boolean" variable="$absolute" line="135">
+            <type by_reference="false">boolean</type>
+          </tag>
+          <tag name="param" description="Whether the link should be disabled (no link) or not (default: true)." type="boolean" variable="$autoDisabled" line="135">
+            <type by_reference="false">boolean</type>
+          </tag>
+          <tag name="return" description="" type="string" line="135">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="144">
+          <name>$routeOrUrl</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="144">
+          <name>$text</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="144">
+          <name>$absolute</name>
+          <default>false</default>
+          <type/>
+        </argument>
+        <argument line="144">
+          <name>$autoDisabled</name>
+          <default>true</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" line="174">
+        <name>button</name>
+        <docblock>
+          <description>Renders a simple button.</description>
+          <long-description>&lt;p&gt;Options:
+     array(
+         'icons' =&gt; array('primary' =&gt; '...', 'secondary' =&gt; '...'),
+         'tag' =&gt; '...',
+         'class' =&gt; array('...', '...'),
+         'html' =&gt; array('xxx' =&gt; '...', 'zzz' =&gt; '...'),
+     );&lt;/p&gt;
+</long-description>
+          <tag name="param" description="A text to display on the button (label)." type="string" variable="$text" line="159">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag name="param" description="An array of options." type="array" variable="$options" line="159">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag name="return" description="" type="string" line="159">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="174">
+          <name>$text</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="174">
+          <name>$options</name>
+          <default>array</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" line="217">
+        <name>buttonLink</name>
+        <docblock>
+          <description>Renders a button with a link.</description>
+          <long-description>
+</long-description>
+          <tag name="param" description="A route name or an URL (which begins with http... or /...)." type="string" variable="$routeOrUrl" line="207">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag name="param" description="The text to display on the button link." type="string" variable="$text" line="207">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag name="param" description="An array of options." type="array" variable="$options" line="207">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag name="param" description="Whether the generated url should be absolute or relative (default: false)." type="boolean" variable="$absolute" line="207">
+            <type by_reference="false">boolean</type>
+          </tag>
+          <tag name="param" description="Whether the link should be disabled (no link) or not (default: true)." type="boolean" variable="$autoDisabled" line="207">
+            <type by_reference="false">boolean</type>
+          </tag>
+          <tag name="return" description="" type="string" line="207">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="217">
+          <name>$routeOrUrl</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="217">
+          <name>$text</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="217">
+          <name>$options</name>
+          <default>array</default>
+          <type/>
+        </argument>
+        <argument line="217">
+          <name>$absolute</name>
+          <default>false</default>
+          <type/>
+        </argument>
+        <argument line="217">
+          <name>$autoDisabled</name>
+          <default>true</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" line="271">
+        <name>infoBox</name>
+        <docblock>
+          <description>Renders an info box.</description>
+          <long-description>
+</long-description>
+          <tag name="param" description="A message to display in the box." type="string" variable="$message" line="263">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag name="param" description="An array of replacements." type="string" variable="$replace" line="263">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag name="param" description="A label for this box (default: &amp;#039;Info:&amp;#039;)." type="string" variable="$label" line="263">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag name="return" description="" type="string" line="263">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="271">
+          <name>$message</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="271">
+          <name>$replace</name>
+          <default>array</default>
+          <type/>
+        </argument>
+        <argument line="271">
+          <name>$label</name>
+          <default>Info:</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" line="296">
+        <name>errorBox</name>
+        <docblock>
+          <description>Renders an error box.</description>
+          <long-description>
+</long-description>
+          <tag name="param" description="A message to display in the box." type="string" variable="$message" line="288">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag name="param" description="An array of replacements." type="string" variable="$replace" line="288">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag name="param" description="A label for this box (default: &amp;#039;Error:&amp;#039;)." type="string" variable="$label" line="288">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag name="return" description="" type="string" line="288">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="296">
+          <name>$message</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="296">
+          <name>$replace</name>
+          <default>array</default>
+          <type/>
+        </argument>
+        <argument line="296">
+          <name>$label</name>
+          <default>Error:</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" line="330">
+        <name>icon</name>
+        <docblock>
+          <description>Renders an icon.</description>
+          <long-description>&lt;p&gt;Silk icons:
+     This method supports &lt;strong&gt;silk&lt;/strong&gt; icons (from famfamfam).
+     Just prefix your icon name by 'silk-' to automatically use a
+     silk icon instead of a JqueryUi one.&lt;/p&gt;
+
+&lt;p&gt;Positions:
+     0: none (default).
+     1: primary.
+     2: secondary.&lt;/p&gt;
+</long-description>
+          <tag name="param" description="An icon name." type="string" variable="$icon" line="313">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag name="param" description="Icon position." type="integer" variable="$position" line="313">
+            <type by_reference="false">integer</type>
+          </tag>
+          <tag name="return" description="" type="string" line="313">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="330">
+          <name>$icon</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="330">
+          <name>$position</name>
+          <default>0</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" line="367">
+        <name>submit</name>
+        <docblock>
+          <description>Renders a 'submit' button.</description>
+          <long-description>
+</long-description>
+          <tag name="param" description="The text to display on the button." type="string" variable="$text" line="360">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag name="param" description="An array of options." type="array" variable="$options" line="360">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag name="return" description="" type="string" line="360">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="367">
+          <name>$text</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="367">
+          <name>$options</name>
+          <default>array</default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+  </file>
+  <file path="Tests/bootstrap.php" hash="077f878307300c75d42946c7cfe47966">
+    <namespace-alias name="UniversalClassLoader">Symfony\Component\ClassLoader\UniversalClassLoader</namespace-alias>
+    <include type="Require Once" line="3">
+      <name>SYMFONY</name>
+    </include>
+    <function namespace="default" line="11">
+      <name>Closure</name>
+      <type>closure</type>
+      <argument line="11">
+        <name>$class</name>
+        <default/>
+        <type/>
+      </argument>
+    </function>
+  </file>
+  <file path="Tests/Templating/Helper/UiHelperTest.php" hash="67db46a41e7b9663c40b063504228221">
+    <class final="false" abstract="false" line="12" namespace="Bazinga\JqueryUiBundle\Templating\Helper">
+      <name>UiHelperTest</name>
+      <extends>\PHPUnit_Framework_TestCase</extends>
+      <full_name>Bazinga\JqueryUiBundle\Templating\Helper\UiHelperTest</full_name>
+      <docblock>
+        <description>UiHelperTest class.</description>
+        <long-description>
+</long-description>
+        <tag name="package" description="JqueryUiBundle" line="5"/>
+        <tag name="subpackage" description="Templating.Helper" line="5"/>
+        <tag name="author" description="William DURAND &amp;lt;william.durand1@gmail.com&amp;gt;" line="5"/>
+      </docblock>
+      <property final="false" static="false" visibility="protected" line="17">
+        <name>$helper</name>
+        <default/>
+        <docblock>
+          <description/>
+          <long-description>
+</long-description>
+          <tag name="var" description="" type="\Bazinga\JqueryUiBundle\Templating\Helper" variable="" line="14">
+            <type by_reference="false">\Bazinga\JqueryUiBundle\Templating\Helper</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" line="22">
+        <name>setUp</name>
+        <docblock>
+          <description>Initialize the helper.</description>
+          <long-description>
+</long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" line="36">
+        <name>testLink</name>
+        <docblock>
+          <description>Test the link() method.</description>
+          <long-description>
+</long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="private" line="49">
+        <name>getMockTranslator</name>
+        <docblock>
+          <description>Returns a mock translator.</description>
+          <long-description>
+</long-description>
+          <tag name="return" description="" type="\Symfony\Component\Translation\TranslatorInterface" line="45">
+            <type by_reference="false">\Symfony\Component\Translation\TranslatorInterface</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="private" line="64">
+        <name>getMockRouter</name>
+        <docblock>
+          <description>Returns a mock router.</description>
+          <long-description>
+</long-description>
+          <tag name="return" description="" type="\Symfony\Component\Routing\RouterInterface" line="60">
+            <type by_reference="false">\Symfony\Component\Routing\RouterInterface</type>
+          </tag>
+        </docblock>
+      </method>
+    </class>
+  </file>
+  <file path="Twig/Extension/UiExtension.php" hash="aa5d586ef7b8fba1603c67b7143cb5c5">
+    <namespace-alias name="UiHelper">Bazinga\JqueryUiBundle\Templating\Helper\UiHelper</namespace-alias>
+    <class final="false" abstract="false" line="15" namespace="Bazinga\JqueryUiBundle\Twig\Extension">
+      <name>UiExtension</name>
+      <extends>\Twig_Extension</extends>
+      <full_name>Bazinga\JqueryUiBundle\Twig\Extension\UiExtension</full_name>
+      <docblock>
+        <description>UiExtension
+Twig extension for the UiHelper class.</description>
+        <long-description>
+</long-description>
+        <tag name="package" description="JqueryUiBundle" line="7"/>
+        <tag name="subpackage" description="Twig.Extension" line="7"/>
+        <tag name="author" description="William DURAND &amp;lt;william.durand1@gmail.com&amp;gt;" line="7"/>
+      </docblock>
+      <property final="false" static="false" visibility="protected" line="20">
+        <name>$helper</name>
+        <default/>
+        <docblock>
+          <description/>
+          <long-description>
+</long-description>
+          <tag name="var" description="" type="Bazinga\JqueryUiBundle\Templating\Helper\UiHelper" variable="" line="17">
+            <type by_reference="false">Bazinga\JqueryUiBundle\Templating\Helper\UiHelper</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" line="27">
+        <name>__construct</name>
+        <docblock>
+          <description>Default constructor.</description>
+          <long-description>
+</long-description>
+          <tag name="param" description="A UiHelper instance." type="Bazinga\JqueryUiBundle\Templating\Helper\UiHelper" variable="$helper" line="22">
+            <type by_reference="false">Bazinga\JqueryUiBundle\Templating\Helper\UiHelper</type>
+          </tag>
+        </docblock>
+        <argument line="27">
+          <name>$helper</name>
+          <default/>
+          <type>UiHelper</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" line="37">
+        <name>getName</name>
+        <docblock>
+          <description>Getter.</description>
+          <long-description>
+</long-description>
+          <tag name="return" description="The name of this extension." type="string" line="32">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" line="47">
+        <name>getFunctions</name>
+        <docblock>
+          <description>Returns a list of functions to add to the existing list.</description>
+          <long-description>
+</long-description>
+          <tag name="return" description="An array of functions" type="array" line="42">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" line="72">
+        <name>link</name>
+        <docblock>
+          <description>Renders a link tag.</description>
+          <long-description>&lt;p&gt;Example:
+     {{ jui_link('homepage', 'Home', false) }}&lt;/p&gt;
+</long-description>
+          <tag name="param" description="A route name or an URL (which begins with http... or /...)." type="string" variable="$routeOrUrl" line="60">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag name="param" description="The text to display on the link." type="string" variable="$text" line="60">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag name="param" description="Whether the generated url should be absolute or relative (default: false)." type="boolean" variable="$absolute" line="60">
+            <type by_reference="false">boolean</type>
+          </tag>
+          <tag name="param" description="Whether the link should be disabled (no link) or not (default: true)." type="boolean" variable="$autoDisabled" line="60">
+            <type by_reference="false">boolean</type>
+          </tag>
+          <tag name="return" description="" type="string" line="60">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="72">
+          <name>$route</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="72">
+          <name>$text</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="72">
+          <name>$absolute</name>
+          <default>false</default>
+          <type/>
+        </argument>
+        <argument line="72">
+          <name>$autoDisabled</name>
+          <default>true</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" line="96">
+        <name>button</name>
+        <docblock>
+          <description>Renders a simple button.</description>
+          <long-description>&lt;p&gt;Example:
+     {{ jui_button('Hello') }}
+     {{ jui_button('Configuration', {'icons': { 'primary': 'wrench'} }) }}&lt;/p&gt;
+
+&lt;p&gt;Options:
+     {
+         'icons': { 'primary': '...', 'secondary': '...' },
+         'tag': '...',
+         'class': [ '...', '...' ],
+         'html': { 'xxx': '...', 'zzz': '...' },
+     }&lt;/p&gt;
+</long-description>
+          <tag name="param" description="A text to display on the button (label)." type="string" variable="$text" line="77">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag name="param" description="An array of options." type="array" variable="$options" line="77">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag name="return" description="" type="string" line="77">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="96">
+          <name>$text</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="96">
+          <name>$options</name>
+          <default>array</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" line="114">
+        <name>buttonLink</name>
+        <docblock>
+          <description>Renders a button with a link.</description>
+          <long-description>&lt;p&gt;Example:
+     {{ jui_button_link('homepage', 'Home') }}&lt;/p&gt;
+</long-description>
+          <tag name="param" description="A route name or an URL (which begins with http... or /...)." type="string" variable="$routeOrUrl" line="101">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag name="param" description="The text to display on the button link." type="string" variable="$text" line="101">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag name="param" description="An array of options." type="array" variable="$options" line="101">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag name="param" description="Whether the generated url should be absolute or relative (default: false)." type="boolean" variable="$absolute" line="101">
+            <type by_reference="false">boolean</type>
+          </tag>
+          <tag name="param" description="Whether the link should be disabled (no link) or not (default: true)." type="boolean" variable="$autoDisabled" line="101">
+            <type by_reference="false">boolean</type>
+          </tag>
+          <tag name="return" description="" type="string" line="101">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="114">
+          <name>$route</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="114">
+          <name>$text</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="114">
+          <name>$options</name>
+          <default>array</default>
+          <type/>
+        </argument>
+        <argument line="114">
+          <name>$absolute</name>
+          <default>false</default>
+          <type/>
+        </argument>
+        <argument line="114">
+          <name>$autoDisabled</name>
+          <default>true</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" line="130">
+        <name>infoBox</name>
+        <docblock>
+          <description>Renders an info box.</description>
+          <long-description>&lt;p&gt;Example:
+    {{ jui_info_box('Hello, World !', 'Information') }}&lt;/p&gt;
+</long-description>
+          <tag name="param" description="A message to display in the box." type="string" variable="$message" line="119">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag name="param" description="An array of replacements." type="string" variable="$replace" line="119">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag name="param" description="A label for this box (default: &amp;#039;Info:&amp;#039;)." type="string" variable="$label" line="119">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag name="return" description="" type="string" line="119">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="130">
+          <name>$text</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="130">
+          <name>$replace</name>
+          <default>array</default>
+          <type/>
+        </argument>
+        <argument line="130">
+          <name>$label</name>
+          <default>Info:</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" line="143">
+        <name>errorBox</name>
+        <docblock>
+          <description>Renders an error box.</description>
+          <long-description>
+</long-description>
+          <tag name="param" description="A message to display in the box." type="string" variable="$message" line="135">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag name="param" description="An array of replacements." type="string" variable="$replace" line="135">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag name="param" description="A label for this box (default: &amp;#039;Error:&amp;#039;)." type="string" variable="$label" line="135">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag name="return" description="" type="string" line="135">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="143">
+          <name>$text</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="143">
+          <name>$replace</name>
+          <default>array</default>
+          <type/>
+        </argument>
+        <argument line="143">
+          <name>$label</name>
+          <default>Error:</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" line="158">
+        <name>icon</name>
+        <docblock>
+          <description>Renders an icon.</description>
+          <long-description>&lt;p&gt;Example:
+     {{ jui_icon('tag') }}
+     {{ jui_icon('wrench') }}&lt;/p&gt;
+</long-description>
+          <tag name="param" description="An icon name." type="string" variable="$icon" line="148">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag name="return" description="" type="string" line="148">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="158">
+          <name>$icon</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" line="173">
+        <name>submit</name>
+        <docblock>
+          <description>Renders a 'submit' button.</description>
+          <long-description>&lt;p&gt;Example:
+     {{ jui_submit({ 'AdminBundle' : 'btn_batch' } }}&lt;/p&gt;
+</long-description>
+          <tag name="param" description="The text to display on the button link." type="string" variable="$text" line="163">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag name="param" description="An array of options." type="array" variable="$options" line="163">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag name="return" description="" type="string" line="163">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="173">
+          <name>$text</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="173">
+          <name>$options</name>
+          <default>array</default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+  </file>
+  <package name=""/>
+  <package name="JqueryUiBundle">
+    <subpackage>DependencyInjection</subpackage>
+    <subpackage>Templating.Helper</subpackage>
+    <subpackage>Twig.Extension</subpackage>
+  </package>
+  <namespace name="Bazinga">
+    <namespace name="JqueryUiBundle">
+      <namespace name="DependencyInjection"/>
+      <namespace name="Templating">
+        <namespace name="Helper"/>
+      </namespace>
+      <namespace name="Twig">
+        <namespace name="Extension"/>
+      </namespace>
+    </namespace>
+  </namespace>
+  <namespace name="default"/>
+  <marker>todo</marker>
+  <marker>fixme</marker>
+</project>

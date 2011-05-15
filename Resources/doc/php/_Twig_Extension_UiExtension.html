@@ -1,0 +1,573 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>DocBlox Documentation</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta><link rel="stylesheet" href="css/black-tie/jquery-ui-1.8.2.custom.css" type="text/css"></link><link rel="stylesheet" href="css/jquery.treeview.css" type="text/css"></link><link rel="stylesheet" href="css/theme.css" type="text/css"></link><script type="text/javascript" src="js/jquery-1.4.2.min.js"></script><script type="text/javascript" src="js/jquery-ui-1.8.2.custom.min.js"></script><script type="text/javascript" src="js/jquery.cookie.js"></script><script type="text/javascript" src="js/jquery.treeview.js"></script><script type="text/javascript">
+            $(document).ready(function() {
+                $(".filetree").treeview({
+                    collapsed: true,
+                    persist: "cookie"
+                });
+
+                $("#accordion").accordion({
+                    collapsible: true,
+                    autoHeight:  false,
+                    fillSpace:   true
+                });
+
+                $(".tabs").tabs();
+            });
+        </script></head><body><div xmlns="" id="content">
+<script>
+      $(document).ready(function() {
+        $('dl.function-info, dl.constant-info, dl.property-info').prev().css('cursor', 'pointer');
+        $('dl.function-info, dl.constant-info, dl.property-info').prev().click(function() {
+          if ($(this).next().is(':hidden'))
+          {
+            $(this).children('img')[0].src = 'images/arrow_down.gif';
+          } else
+          {
+            $(this).children('img')[0].src = 'images/arrow_right.gif';
+          }
+          $(this).next().slideToggle();
+        });
+      $('dl.function-info, dl.constant-info, dl.property-info').hide();
+      $('dl.function-info img, dl.constant-info img, dl.property-info img').show();
+      });
+    </script><a name="top"></a><h1 class="file">Twig/Extension/UiExtension.php</h1>
+<div class="file_menu">
+<a href="#classes">Classes</a> </div>
+<dl class="file-info">
+<dt>Classes</dt>
+<dd><a class="class" href="#Bazinga%5CJqueryUiBundle%5CTwig%5CExtension%5CUiExtension">UiExtension</a></dd>
+</dl>
+<a name="classes"></a><a id="Bazinga\JqueryUiBundle\Twig\Extension\UiExtension"></a><h2 class="class">Bazinga\JqueryUiBundle\Twig\Extension\UiExtension<div class="to-top"><a href="#top">jump to top</a></div>
+</h2>
+<div class="class">
+<dl class="class-info">
+<dt>Extends from</dt>
+<dd>\Twig_Extension</dd>
+<dt>author</dt>
+<dd>William DURAND &lt;william.durand1@gmail.com&gt;</dd>
+<dt>package</dt>
+<dd>JqueryUiBundle</dd>
+<dt>subpackage</dt>
+<dd>Twig.Extension</dd>
+<dt>Properties</dt>
+<dd><a class="property" href="#Bazinga%5CJqueryUiBundle%5CTwig%5CExtension%5CUiExtension::%24helper">$helper</a></dd>
+<dt>Methods</dt>
+<dd><a class="method" href="#Bazinga%5CJqueryUiBundle%5CTwig%5CExtension%5CUiExtension::__construct()">__construct</a></dd>
+<dd><a class="method" href="#Bazinga%5CJqueryUiBundle%5CTwig%5CExtension%5CUiExtension::getName()">getName</a></dd>
+<dd><a class="method" href="#Bazinga%5CJqueryUiBundle%5CTwig%5CExtension%5CUiExtension::getFunctions()">getFunctions</a></dd>
+<dd><a class="method" href="#Bazinga%5CJqueryUiBundle%5CTwig%5CExtension%5CUiExtension::link()">link</a></dd>
+<dd><a class="method" href="#Bazinga%5CJqueryUiBundle%5CTwig%5CExtension%5CUiExtension::button()">button</a></dd>
+<dd><a class="method" href="#Bazinga%5CJqueryUiBundle%5CTwig%5CExtension%5CUiExtension::buttonLink()">buttonLink</a></dd>
+<dd><a class="method" href="#Bazinga%5CJqueryUiBundle%5CTwig%5CExtension%5CUiExtension::infoBox()">infoBox</a></dd>
+<dd><a class="method" href="#Bazinga%5CJqueryUiBundle%5CTwig%5CExtension%5CUiExtension::errorBox()">errorBox</a></dd>
+<dd><a class="method" href="#Bazinga%5CJqueryUiBundle%5CTwig%5CExtension%5CUiExtension::icon()">icon</a></dd>
+<dd><a class="method" href="#Bazinga%5CJqueryUiBundle%5CTwig%5CExtension%5CUiExtension::submit()">submit</a></dd>
+</dl>
+<h3>Description</h3>
+<p class="short-description">UiExtension
+Twig extension for the UiHelper class.</p>
+<div class="long-description">
+</div>
+<h3>Properties</h3>
+<div>
+<a id="Bazinga\JqueryUiBundle\Twig\Extension\UiExtension::$helper"></a><h4 class="property">$helper<div class="to-top"><a href="#Bazinga%5CJqueryUiBundle%5CTwig%5CExtension%5CUiExtension">jump to class</a></div>
+</h4>
+<div class="property">
+<code><a href="_Templating_Helper_UiHelper.html#Bazinga%5CJqueryUiBundle%5CTemplating%5CHelper%5CUiHelper">Bazinga\JqueryUiBundle\Templating\Helper\UiHelper</a> <span class="highlight">$helper</span> = ''</code><p class="short-description"></p>
+<div class="long-description">
+</div>
+<div class="api-section">
+<h4 class="info">
+<img src="images/arrow_right.gif"> Details</h4>
+<dl class="property-info">
+<dt>$helper</dt>
+<dd>
+<a href="_Templating_Helper_UiHelper.html#Bazinga%5CJqueryUiBundle%5CTemplating%5CHelper%5CUiHelper">Bazinga\JqueryUiBundle\Templating\Helper\UiHelper</a><br><em></em>
+</dd>
+<dt>visibility</dt>
+<dd>protected</dd>
+<dt>default</dt>
+<dd></dd>
+<dt>final</dt>
+<dd>false</dd>
+<dt>static</dt>
+<dd>false</dd>
+</dl>
+<div class="clear"></div>
+</div>
+</div>
+</div>
+<h3>Methods</h3>
+<div>
+<a id="Bazinga\JqueryUiBundle\Twig\Extension\UiExtension::__construct()"></a><h4 class="method">__construct<div class="to-top"><a href="#UiExtension">jump to class</a></div>
+</h4>
+<div class="method">
+<code><span class="highlight">__construct</span><span class="nb-faded-text">(
+          <a href="_Templating_Helper_UiHelper.html#Bazinga%5CJqueryUiBundle%5CTemplating%5CHelper%5CUiHelper">Bazinga\JqueryUiBundle\Templating\Helper\UiHelper</a> $helper
+          )
+        </span>
+        :
+        </code><p class="short-description">Default constructor.</p>
+<div class="long-description">
+</div>
+<div class="api-section">
+<h5 class="arguments">Arguments</h5>
+<dl class="argument-info">
+<dt>$helper</dt>
+<dd>Bazinga\JqueryUiBundle\Templating\Helper\UiHelper<br><em>A UiHelper instance.</em>
+</dd>
+</dl>
+<div class="clear"></div>
+</div>
+<div class="api-section">
+<h5 class="info">
+<img src="images/arrow_right.gif"> Details</h5>
+<dl class="function-info">
+<dt>visibility</dt>
+<dd>public</dd>
+<dt>final</dt>
+<dd>false</dd>
+<dt>static</dt>
+<dd>false</dd>
+</dl>
+<div class="clear"></div>
+</div>
+</div>
+<a id="Bazinga\JqueryUiBundle\Twig\Extension\UiExtension::button()"></a><h4 class="method">button<div class="to-top"><a href="#UiExtension">jump to class</a></div>
+</h4>
+<div class="method">
+<code><span class="highlight">button</span><span class="nb-faded-text">(
+          string $text, array $options
+              =
+              array
+          )
+        </span>
+        :
+        string</code><p class="short-description">Renders a simple button.</p>
+<div class="long-description"><p>Example:
+     {{ jui_button('Hello') }}
+     {{ jui_button('Configuration', {'icons': { 'primary': 'wrench'} }) }}</p>
+
+<p>Options:
+     {
+         'icons': { 'primary': '...', 'secondary': '...' },
+         'tag': '...',
+         'class': [ '...', '...' ],
+         'html': { 'xxx': '...', 'zzz': '...' },
+     }</p>
+</div>
+<div class="api-section">
+<h5 class="arguments">Arguments</h5>
+<dl class="argument-info">
+<dt>$text</dt>
+<dd>string<br><em>A text to display on the button (label).</em>
+</dd>
+<dt>$options</dt>
+<dd>array<br><em>An array of options.</em>
+</dd>
+</dl>
+<div class="clear"></div>
+</div>
+<div class="api-section">
+<h5 class="output">Output</h5>
+<dl class="return-info">
+<dt>string</dt>
+<dd><em></em></dd>
+</dl>
+<div class="clear"></div>
+</div>
+<div class="api-section">
+<h5 class="info">
+<img src="images/arrow_right.gif"> Details</h5>
+<dl class="function-info">
+<dt>visibility</dt>
+<dd>public</dd>
+<dt>final</dt>
+<dd>false</dd>
+<dt>static</dt>
+<dd>false</dd>
+</dl>
+<div class="clear"></div>
+</div>
+</div>
+<a id="Bazinga\JqueryUiBundle\Twig\Extension\UiExtension::buttonLink()"></a><h4 class="method">buttonLink<div class="to-top"><a href="#UiExtension">jump to class</a></div>
+</h4>
+<div class="method">
+<code><span class="highlight">buttonLink</span><span class="nb-faded-text">(
+           $route, string $text, array $options
+              =
+              array, boolean $absolute
+              =
+              false, boolean $autoDisabled
+              =
+              true
+          )
+        </span>
+        :
+        string</code><p class="short-description">Renders a button with a link.</p>
+<div class="long-description"><p>Example:
+     {{ jui_button_link('homepage', 'Home') }}</p>
+</div>
+<div class="api-section">
+<h5 class="arguments">Arguments</h5>
+<dl class="argument-info">
+<dt>$route</dt>
+<dd><em></em></dd>
+<dt>$text</dt>
+<dd>string<br><em>The text to display on the button link.</em>
+</dd>
+<dt>$options</dt>
+<dd>array<br><em>An array of options.</em>
+</dd>
+<dt>$absolute</dt>
+<dd>boolean<br><em>Whether the generated url should be absolute or relative (default: false).</em>
+</dd>
+<dt>$autoDisabled</dt>
+<dd>boolean<br><em>Whether the link should be disabled (no link) or not (default: true).</em>
+</dd>
+</dl>
+<div class="clear"></div>
+</div>
+<div class="api-section">
+<h5 class="output">Output</h5>
+<dl class="return-info">
+<dt>string</dt>
+<dd><em></em></dd>
+</dl>
+<div class="clear"></div>
+</div>
+<div class="api-section">
+<h5 class="info">
+<img src="images/arrow_right.gif"> Details</h5>
+<dl class="function-info">
+<dt>visibility</dt>
+<dd>public</dd>
+<dt>final</dt>
+<dd>false</dd>
+<dt>static</dt>
+<dd>false</dd>
+</dl>
+<div class="clear"></div>
+</div>
+</div>
+<a id="Bazinga\JqueryUiBundle\Twig\Extension\UiExtension::errorBox()"></a><h4 class="method">errorBox<div class="to-top"><a href="#UiExtension">jump to class</a></div>
+</h4>
+<div class="method">
+<code><span class="highlight">errorBox</span><span class="nb-faded-text">(
+           $text, string $replace
+              =
+              array, string $label
+              =
+              Error:
+          )
+        </span>
+        :
+        string</code><p class="short-description">Renders an error box.</p>
+<div class="long-description">
+</div>
+<div class="api-section">
+<h5 class="arguments">Arguments</h5>
+<dl class="argument-info">
+<dt>$text</dt>
+<dd><em></em></dd>
+<dt>$replace</dt>
+<dd>string<br><em>An array of replacements.</em>
+</dd>
+<dt>$label</dt>
+<dd>string<br><em>A label for this box (default: &amp;#039;Error:&amp;#039;).</em>
+</dd>
+</dl>
+<div class="clear"></div>
+</div>
+<div class="api-section">
+<h5 class="output">Output</h5>
+<dl class="return-info">
+<dt>string</dt>
+<dd><em></em></dd>
+</dl>
+<div class="clear"></div>
+</div>
+<div class="api-section">
+<h5 class="info">
+<img src="images/arrow_right.gif"> Details</h5>
+<dl class="function-info">
+<dt>visibility</dt>
+<dd>public</dd>
+<dt>final</dt>
+<dd>false</dd>
+<dt>static</dt>
+<dd>false</dd>
+</dl>
+<div class="clear"></div>
+</div>
+</div>
+<a id="Bazinga\JqueryUiBundle\Twig\Extension\UiExtension::getFunctions()"></a><h4 class="method">getFunctions<div class="to-top"><a href="#UiExtension">jump to class</a></div>
+</h4>
+<div class="method">
+<code><span class="highlight">getFunctions</span><span class="nb-faded-text">(
+          
+          )
+        </span>
+        :
+        array</code><p class="short-description">Returns a list of functions to add to the existing list.</p>
+<div class="long-description">
+</div>
+<div class="api-section">
+<h5 class="output">Output</h5>
+<dl class="return-info">
+<dt>array</dt>
+<dd><em>An array of functions</em></dd>
+</dl>
+<div class="clear"></div>
+</div>
+<div class="api-section">
+<h5 class="info">
+<img src="images/arrow_right.gif"> Details</h5>
+<dl class="function-info">
+<dt>visibility</dt>
+<dd>public</dd>
+<dt>final</dt>
+<dd>false</dd>
+<dt>static</dt>
+<dd>false</dd>
+</dl>
+<div class="clear"></div>
+</div>
+</div>
+<a id="Bazinga\JqueryUiBundle\Twig\Extension\UiExtension::getName()"></a><h4 class="method">getName<div class="to-top"><a href="#UiExtension">jump to class</a></div>
+</h4>
+<div class="method">
+<code><span class="highlight">getName</span><span class="nb-faded-text">(
+          
+          )
+        </span>
+        :
+        string</code><p class="short-description">Getter.</p>
+<div class="long-description">
+</div>
+<div class="api-section">
+<h5 class="output">Output</h5>
+<dl class="return-info">
+<dt>string</dt>
+<dd><em>The name of this extension.</em></dd>
+</dl>
+<div class="clear"></div>
+</div>
+<div class="api-section">
+<h5 class="info">
+<img src="images/arrow_right.gif"> Details</h5>
+<dl class="function-info">
+<dt>visibility</dt>
+<dd>public</dd>
+<dt>final</dt>
+<dd>false</dd>
+<dt>static</dt>
+<dd>false</dd>
+</dl>
+<div class="clear"></div>
+</div>
+</div>
+<a id="Bazinga\JqueryUiBundle\Twig\Extension\UiExtension::icon()"></a><h4 class="method">icon<div class="to-top"><a href="#UiExtension">jump to class</a></div>
+</h4>
+<div class="method">
+<code><span class="highlight">icon</span><span class="nb-faded-text">(
+          string $icon
+          )
+        </span>
+        :
+        string</code><p class="short-description">Renders an icon.</p>
+<div class="long-description"><p>Example:
+     {{ jui_icon('tag') }}
+     {{ jui_icon('wrench') }}</p>
+</div>
+<div class="api-section">
+<h5 class="arguments">Arguments</h5>
+<dl class="argument-info">
+<dt>$icon</dt>
+<dd>string<br><em>An icon name.</em>
+</dd>
+</dl>
+<div class="clear"></div>
+</div>
+<div class="api-section">
+<h5 class="output">Output</h5>
+<dl class="return-info">
+<dt>string</dt>
+<dd><em></em></dd>
+</dl>
+<div class="clear"></div>
+</div>
+<div class="api-section">
+<h5 class="info">
+<img src="images/arrow_right.gif"> Details</h5>
+<dl class="function-info">
+<dt>visibility</dt>
+<dd>public</dd>
+<dt>final</dt>
+<dd>false</dd>
+<dt>static</dt>
+<dd>false</dd>
+</dl>
+<div class="clear"></div>
+</div>
+</div>
+<a id="Bazinga\JqueryUiBundle\Twig\Extension\UiExtension::infoBox()"></a><h4 class="method">infoBox<div class="to-top"><a href="#UiExtension">jump to class</a></div>
+</h4>
+<div class="method">
+<code><span class="highlight">infoBox</span><span class="nb-faded-text">(
+           $text, string $replace
+              =
+              array, string $label
+              =
+              Info:
+          )
+        </span>
+        :
+        string</code><p class="short-description">Renders an info box.</p>
+<div class="long-description"><p>Example:
+    {{ jui_info_box('Hello, World !', 'Information') }}</p>
+</div>
+<div class="api-section">
+<h5 class="arguments">Arguments</h5>
+<dl class="argument-info">
+<dt>$text</dt>
+<dd><em></em></dd>
+<dt>$replace</dt>
+<dd>string<br><em>An array of replacements.</em>
+</dd>
+<dt>$label</dt>
+<dd>string<br><em>A label for this box (default: &amp;#039;Info:&amp;#039;).</em>
+</dd>
+</dl>
+<div class="clear"></div>
+</div>
+<div class="api-section">
+<h5 class="output">Output</h5>
+<dl class="return-info">
+<dt>string</dt>
+<dd><em></em></dd>
+</dl>
+<div class="clear"></div>
+</div>
+<div class="api-section">
+<h5 class="info">
+<img src="images/arrow_right.gif"> Details</h5>
+<dl class="function-info">
+<dt>visibility</dt>
+<dd>public</dd>
+<dt>final</dt>
+<dd>false</dd>
+<dt>static</dt>
+<dd>false</dd>
+</dl>
+<div class="clear"></div>
+</div>
+</div>
+<a id="Bazinga\JqueryUiBundle\Twig\Extension\UiExtension::link()"></a><h4 class="method">link<div class="to-top"><a href="#UiExtension">jump to class</a></div>
+</h4>
+<div class="method">
+<code><span class="highlight">link</span><span class="nb-faded-text">(
+           $route, string $text, boolean $absolute
+              =
+              false, boolean $autoDisabled
+              =
+              true
+          )
+        </span>
+        :
+        string</code><p class="short-description">Renders a link tag.</p>
+<div class="long-description"><p>Example:
+     {{ jui_link('homepage', 'Home', false) }}</p>
+</div>
+<div class="api-section">
+<h5 class="arguments">Arguments</h5>
+<dl class="argument-info">
+<dt>$route</dt>
+<dd><em></em></dd>
+<dt>$text</dt>
+<dd>string<br><em>The text to display on the link.</em>
+</dd>
+<dt>$absolute</dt>
+<dd>boolean<br><em>Whether the generated url should be absolute or relative (default: false).</em>
+</dd>
+<dt>$autoDisabled</dt>
+<dd>boolean<br><em>Whether the link should be disabled (no link) or not (default: true).</em>
+</dd>
+</dl>
+<div class="clear"></div>
+</div>
+<div class="api-section">
+<h5 class="output">Output</h5>
+<dl class="return-info">
+<dt>string</dt>
+<dd><em></em></dd>
+</dl>
+<div class="clear"></div>
+</div>
+<div class="api-section">
+<h5 class="info">
+<img src="images/arrow_right.gif"> Details</h5>
+<dl class="function-info">
+<dt>visibility</dt>
+<dd>public</dd>
+<dt>final</dt>
+<dd>false</dd>
+<dt>static</dt>
+<dd>false</dd>
+</dl>
+<div class="clear"></div>
+</div>
+</div>
+<a id="Bazinga\JqueryUiBundle\Twig\Extension\UiExtension::submit()"></a><h4 class="method">submit<div class="to-top"><a href="#UiExtension">jump to class</a></div>
+</h4>
+<div class="method">
+<code><span class="highlight">submit</span><span class="nb-faded-text">(
+          string $text, array $options
+              =
+              array
+          )
+        </span>
+        :
+        string</code><p class="short-description">Renders a 'submit' button.</p>
+<div class="long-description"><p>Example:
+     {{ jui_submit({ 'AdminBundle' : 'btn_batch' } }}</p>
+</div>
+<div class="api-section">
+<h5 class="arguments">Arguments</h5>
+<dl class="argument-info">
+<dt>$text</dt>
+<dd>string<br><em>The text to display on the button link.</em>
+</dd>
+<dt>$options</dt>
+<dd>array<br><em>An array of options.</em>
+</dd>
+</dl>
+<div class="clear"></div>
+</div>
+<div class="api-section">
+<h5 class="output">Output</h5>
+<dl class="return-info">
+<dt>string</dt>
+<dd><em></em></dd>
+</dl>
+<div class="clear"></div>
+</div>
+<div class="api-section">
+<h5 class="info">
+<img src="images/arrow_right.gif"> Details</h5>
+<dl class="function-info">
+<dt>visibility</dt>
+<dd>public</dd>
+<dt>final</dt>
+<dd>false</dd>
+<dt>static</dt>
+<dd>false</dd>
+</dl>
+<div class="clear"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<small xmlns="" class="footer">Documentation was generated by <a href="http://docblox-project.org">DocBlox 0.10.0</a>.
+    </small></body></html>
