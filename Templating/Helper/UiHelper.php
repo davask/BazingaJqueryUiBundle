@@ -12,6 +12,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * UiHelper
  * Contains a set of helper methods for jQuery UI.
  *
+ * @package JqueryUiBundle
+ * @subpackage Templating.Helper
  * @author William DURAND <william.durand1@gmail.com>
  */
 class UiHelper extends Helper

@@ -11,6 +11,8 @@ use Symfony\Component\Config\FileLocator;
  * BazingaJqueryUiExtension
  * Load configuration.
  *
+ * @package JqueryUiBundle
+ * @subpackage DependencyInjection
  * @author William DURAND <william.durand1@gmail.com>
  */
 class BazingaJqueryUiExtension extends Extension

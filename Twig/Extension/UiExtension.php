@@ -8,6 +8,8 @@ use Bazinga\JqueryUiBundle\Templating\Helper\UiHelper;
  * UiExtension
  * Twig extension for the UiHelper class.
  *
+ * @package JqueryUiBundle
+ * @subpackage Twig.Extension
  * @author William DURAND <william.durand1@gmail.com>
  */
 class UiExtension extends \Twig_Extension
