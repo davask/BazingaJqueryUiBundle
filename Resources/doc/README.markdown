@@ -13,7 +13,7 @@ Installation
 
 Install this bundle as usual:
 
-> git submodule add git://github.com/Bazinga/JqueryUiBundle.git vendor/bundles/Bazinga/JqueryUiBundle
+> git submodule add git://github.com/Bazinga/BazingaJqueryUiBundle.git vendor/bundles/Bazinga/JqueryUiBundle
 
 Register the namespace in `app/autoload.php`:
 
