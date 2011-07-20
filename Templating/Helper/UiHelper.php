@@ -3,9 +3,6 @@
 namespace Bazinga\JqueryUiBundle\Templating\Helper;
 
 use Symfony\Component\Templating\Helper\Helper;
-use Symfony\Component\Translation\Translator;
-use Symfony\Component\Routing\Router;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -27,9 +24,9 @@ class UiHelper extends Helper
      */
     protected $translator;
     /**
-     * @var \Symfony\Component\HttpFoundation\Request
+     * @var \Symfony\Component\DependencyInjection\ContainerInterface
      */
-    protected $request;
+    protected $container;
 
     /**
      * Default constructor.
@@ -38,9 +35,17 @@ class UiHelper extends Helper
      */
     public function __construct(ContainerInterface $container)
     {
-        $this->router = $container->get('router');
+        $this->router     = $container->get('router');
         $this->translator = $container->get('translator');
-        $this->request = $container->get('request');
+        $this->container  = $container;
+    }
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\Request
+     */
+    protected function getRequest()
+    {
+        return $this->container->get('request');
     }
 
     /**
@@ -146,7 +151,7 @@ class UiHelper extends Helper
         if ('' === $routeOrUrl) {
             $url = '';
         } else {
-            if ($this->isRoute($routeOrUrl) && $routeOrUrl === $this->request->get('_route') && $autoDisabled) {
+            if ($this->isRoute($routeOrUrl) && $routeOrUrl === $this->getRequest()->get('_route') && $autoDisabled) {
                 return $this->translate($text);
             } else {
                 $url = $this->isRoute($routeOrUrl) ? $this->router->generate($routeOrUrl, array(), $absolute) : $routeOrUrl;
@@ -217,7 +222,7 @@ class UiHelper extends Helper
     public function buttonLink($routeOrUrl, $text, $options = array(), $absolute = false, $autoDisabled = true)
     {
         // disable button
-        if ($this->isRoute($routeOrUrl) && $routeOrUrl === $this->request->get('_route') && $autoDisabled) {
+        if ($this->isRoute($routeOrUrl) && $routeOrUrl === $this->getRequest()->get('_route') && $autoDisabled) {
             if (array_key_exists('class', $options)) {
                 $options['class'] = array_merge($options['class'], array('ui-state-disabled'));
             } else {
