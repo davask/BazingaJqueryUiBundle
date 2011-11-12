@@ -1,0 +1,20 @@
+{
+  "name": "willdurand/jquery-ui-bundle",
+  "description": "A set of Twig functions and PHP helpers for Jquery UI.",
+  "keywords": ["twig", "jquery", "ui", "helpers"],
+  "type": "symfony-bundle",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "William Durand",
+      "email": "william.durand1@gmail.com"
+    }
+  ],
+  "require": {
+    "symfony/framework-bundle": "2.*"
+  },
+  "autoload": {
+    "psr-0": { "Bazinga\\JqueryUiBundle": "" }
+  },
+  "target-dir": "Bazinga/JqueryUiBundle"
+}
