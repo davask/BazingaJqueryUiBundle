@@ -9,9 +9,6 @@
     stopOnFailure="false"
     syntaxCheck="false"
     bootstrap="./Tests/bootstrap.php">
-    <php>
-        <server name="SYMFONY" value="./Fixtures/symfony/src" />
-    </php>
     <testsuites>
         <testsuite name="JqueryUiBundle Test Suite">
             <directory suffix="Test.php">./Tests</directory>
