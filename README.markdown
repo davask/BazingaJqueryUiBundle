@@ -1,6 +1,8 @@
 JqueryUiBundle
 ==============
 
+[![Build Status](https://secure.travis-ci.org/willdurand/BazingaJqueryUiBundle.png)](http://travis-ci.org/willdurand/BazingaJqueryUiBundle)
+
 Here is a set of Twig functions and PHP helpers for [jQuery UI](http://jqueryui.com/).
 
 **Why ?** You will be able to display degraded versions of buttons, messages box and icons. That ensures to get the same render with and without JavaScript on the most part of web browsers.
