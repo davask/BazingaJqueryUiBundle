@@ -1,5 +1,5 @@
 {
-  "name": "willdurand/jquery-ui-bundle",
+  "name": "awily/jquery-ui-bundle",
   "description": "A set of Twig functions and PHP helpers for Jquery UI.",
   "keywords": ["twig", "jquery", "ui", "helpers"],
   "type": "symfony-bundle",
